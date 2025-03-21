@@ -1,0 +1,6 @@
+start_date: '2025-01-02'
+end_date: '2025-03-14'
+email: jfm@araid.es
+text:
+  value: '<ul><li>To start a new application please click on "Create new account", type your username of choice and a valid email address. A blank application will be immediately created and you will receive an email with a password. If you don''t receive it in a few minutes, please review your spam folder before contact us. To complete the application, follow the instructions in the <a href="https://araid.es/sites/default/files/convocatorias/ApplicantGuide_2025.pdf">Guide for Applicants</a>.</li><li>Call 2025 Documents:<ul><li><a href="https://araid.es/en/content/araid-call-2025">Call</a></li><li><a href="https://araid.es/sites/default/files/convocatorias/ApplicantGuide_2025.pdf">Guide for Applicants</a></li><li><a href="https://araid.es/sites/default/files/convocatorias/FAQ_2025.pdf">FAQs</a></li><li><a href="https://araid.es/sites/default/files/convocatorias/ResearchProposal_2025.pdf">Research Proposal Template</a></li><li><a href="https://araid.es/sites/default/files/convocatorias/EvaluatorsForm_2025.pdf">Evaluators Form</a></li></ul></li><li>If you have doubts or want to communicate any technical problem please contact: convocatorias@araid.es</li></ul>'
+  format: basic_html

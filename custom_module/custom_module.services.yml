@@ -1,0 +1,17 @@
+services:
+
+  custom_module.redirect_users:
+    class: Drupal\custom_module\EventSubscriber\RedirectUsers
+    arguments: ['@current_route_match', '@current_user']
+    tags:
+    - { name: event_subscriber}
+
+  custom_module.rankings_manager:
+    class: Drupal\custom_module\Service\RankingsManager
+    arguments: ['@entity_type.manager']
+
+  custom_module.taxonomy_print_configuration_subscriber:
+    class: Drupal\custom_module\EventSubscriber\TaxonomyPrintConfigurationSubscriber
+    arguments: ['@custom_module.rankings_manager']
+    tags:
+      - { name: event_subscriber }

@@ -1,0 +1,16 @@
+custom_module.applicationsettings:
+  type: config_object
+  label: 'Application settings'
+  mapping:
+    start_date:
+      type: date
+      label: "Application start date"
+    end_date:
+      type: date
+      label: "Application end date" 
+    email:
+      type: email
+      label: "Administrator notification email"
+    text:
+      type: text
+      label: "Call for applications text"

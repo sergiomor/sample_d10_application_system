@@ -1,0 +1,48 @@
+custom_module.application_settings:
+  title: 'Application Settings'
+  description: 'Manage application settings such as Start Date, etc.'
+  route_name: custom_module.application_settings.form
+  parent: 'system.admin'
+  weight: -99
+
+custom_module.rankings:
+  title: 'Rankings'
+  description: 'Manage rankings'
+  route_name: custom_module.ranking_per_field
+  parent: 'system.admin'
+  weight: -60
+
+custom_module.rankings_admin:
+  title: 'Rankings Approval Management'
+  description: 'Manage Rankings Approval'
+  route_name: custom_module.rankings_admin
+  parent: 'system.admin'
+  weight: -59
+
+custom_module.publish_evaluations:
+  title: 'Publish Evaluations'
+  description: 'Manage Publishing Evaluations'
+  route_name: custom_module.publish_evaluations
+  parent: 'system.admin'
+  weight: -58
+
+custom_module.download_apps:
+  title: 'Download Applications'
+  description: 'Manage Download Applications'
+  route_name: custom_module.download_applications.form
+  parent: 'system.admin'
+  weight: -57
+
+custom_module.download_apps_csv:
+  title: 'Download Applications CSV'
+  description: 'Manage Download Applications CSV'
+  route_name: custom_module.download_csv
+  parent: 'system.admin'
+  weight: -56
+
+custom_module.delete_data:
+  title: 'Delete Data'
+  description: 'Manage Delete Data'
+  route_name: custom_module.delete_data.form
+  parent: 'system.admin'
+  weight: -55
