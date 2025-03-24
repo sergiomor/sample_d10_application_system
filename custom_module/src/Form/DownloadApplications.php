@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\custom_module\Form;
+namespace Drupal\research_application_workflow\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -164,7 +164,7 @@ class DownloadApplications extends FormBase {
             }
         } catch (\Exception $e) {
             \Drupal::messenger()->addError(t('Error creating zip file: @message', ['@message' => $e->getMessage()]));
-            \Drupal::logger('custom_module')->error('Error creating zip file: @message', ['@message' => $e->getMessage()]);
+            \Drupal::logger('research_application_workflow')->error('Error creating zip file: @message', ['@message' => $e->getMessage()]);
         }
     }
 
@@ -220,7 +220,7 @@ class DownloadApplications extends FormBase {
             }
         } catch (\Exception $e) {
             \Drupal::messenger()->addError(t('Error creating PDF: @message', ['@message' => $e->getMessage()]));
-            \Drupal::logger('custom_module')->error('Error creating PDF: @message', ['@message' => $e->getMessage()]);
+            \Drupal::logger('research_application_workflow')->error('Error creating PDF: @message', ['@message' => $e->getMessage()]);
         }
         
         return FALSE;

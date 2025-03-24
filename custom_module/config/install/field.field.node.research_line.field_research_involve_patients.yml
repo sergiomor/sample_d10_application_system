@@ -1,0 +1,23 @@
+uuid: ee2c9a8c-5f2d-4f45-8dc4-9425a471c08f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_research_involve_patients
+    - node.type.research_line
+id: node.research_line.field_research_involve_patients
+field_name: field_research_involve_patients
+entity_type: node
+bundle: research_line
+label: 'Does the proposed research involve patients?'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

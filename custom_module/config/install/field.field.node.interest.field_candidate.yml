@@ -1,0 +1,23 @@
+uuid: f1e34762-46b8-40f1-b1b7-8fe82a6e4a25
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_candidate
+    - node.type.interest
+id: node.interest.field_candidate
+field_name: field_candidate
+entity_type: node
+bundle: interest
+label: Candidate
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,23 @@
+uuid: 4c74179e-7cd4-4d88-9d7a-a753b97ba0eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_animals_transgen_farm
+    - node.type.research_line
+id: node.research_line.field_animals_transgen_farm
+field_name: field_animals_transgen_farm
+entity_type: node
+bundle: research_line
+label: 'Are those animals transgenic farm animals?'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\custom_module\Form;
+namespace Drupal\research_application_workflow\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -185,10 +185,10 @@ class ExpressionsInterest extends FormBase {
             //send email
             $mailManager = \Drupal::service('plugin.manager.mail');
             $form_values = $form_state->getValues();
-            $module = 'custom_module';
+            $module = 'research_application_workflow';
             $key = 'ir_existing';
             $to = $form_values['email'];
-            $from = 'servidor@araid.es';
+            $from = 'mail@example.com';
             $params = '';
             $language_code = \Drupal::LanguageManager()->getDefaultLanguage()->getId();
             $send_now = TRUE;
@@ -229,10 +229,10 @@ class ExpressionsInterest extends FormBase {
             //send email
             $mailManager = \Drupal::service('plugin.manager.mail');
             $form_values = $form_state->getValues();
-            $module = 'custom_module';
+            $module = 'research_application_workflow';
             $key = 'ir_non_existing';
             $to = $form_values['email'];
-            $from = 'servidor@araid.es';
+            $from = 'mail@example.com';
             $params = '
                 <p>' . $username . '</p>
                 <p>A new candidate has selected you to complete a expression of interest.</p>

@@ -1,0 +1,23 @@
+uuid: f4434047-8354-49ee-9167-c189d0d4da59
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_position_eva2
+    - node.type.interest
+id: node.interest.field_position_eva2
+field_name: field_position_eva2
+entity_type: node
+bundle: interest
+label: 'Position eva2'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

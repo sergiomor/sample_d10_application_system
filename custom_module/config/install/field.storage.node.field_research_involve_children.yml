@@ -1,0 +1,18 @@
+uuid: 52da43e2-90fc-4ea5-9e93-7ecf4687bf12
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_research_involve_children
+field_name: field_research_involve_children
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

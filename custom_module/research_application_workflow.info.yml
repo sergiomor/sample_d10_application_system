@@ -1,0 +1,12 @@
+name: Research Application Workflow
+type: module
+description: The module manages a complete application workflow system for research positions, from submission to evaluation and ranking.
+core_version_requirement: 10.x
+package : Custom
+
+dependencies:
+  - drupal:node
+  - drupal:field
+  - drupal:taxonomy
+  - paragraphs:paragraphs
+  - entity_print

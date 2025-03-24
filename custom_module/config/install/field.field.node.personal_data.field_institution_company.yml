@@ -1,0 +1,19 @@
+uuid: 9d93f446-982d-42cb-92b8-1b060088ac13
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_institution_company
+    - node.type.personal_data
+id: node.personal_data.field_institution_company
+field_name: field_institution_company
+entity_type: node
+bundle: personal_data
+label: Institution/Company
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

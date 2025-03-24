@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\custom_module\Form;
+namespace Drupal\research_application_workflow\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -126,10 +126,10 @@ class SubmitApplication extends FormBase {
      */
     public function NotifyAdmin($c_user) {
         $mailManager = \Drupal::service('plugin.manager.mail');
-        $module = 'custom_module';
+        $module = 'research_application_workflow';
         $key = 'admin_app_notify';
-        $to = \Drupal::config('custom_module.applicationsettings')->get('email');
-        $from = 'servidor@araid.es';
+        $to = \Drupal::config('research_application_workflow.applicationsettings')->get('email');
+        $from = 'mail@example.com';
         $params = '
             <p>The candidate ' . $c_user->getAccountName() . ' submitted an application.</p>
             <br>
@@ -143,10 +143,10 @@ class SubmitApplication extends FormBase {
 
     public function NotifyCandidate($c_user) {
         $mailManager = \Drupal::service('plugin.manager.mail');
-        $module = 'custom_module';
+        $module = 'research_application_workflow';
         $key = 'candidate_app_notify';
         $to = $c_user->getEmail();;
-        $from = 'servidor@araid.es';
+        $from = 'mail@example.com';
         $params = '
             <p>Dear Candidate,</p>
             <br>

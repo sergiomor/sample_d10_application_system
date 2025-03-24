@@ -1,0 +1,19 @@
+uuid: 0e43215c-962a-4300-96d5-c1e41084c995
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_quality_applicant
+field_name: field_quality_applicant
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

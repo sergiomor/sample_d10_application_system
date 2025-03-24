@@ -1,0 +1,27 @@
+uuid: 40150dac-e04e-4973-a7dd-dc89825e0b0d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_evaluators_ranking_pdf
+    - taxonomy.vocabulary.field_of_research
+  module:
+    - file
+id: taxonomy_term.field_of_research.field_evaluators_ranking_pdf
+field_name: field_evaluators_ranking_pdf
+entity_type: taxonomy_term
+bundle: field_of_research
+label: 'Evaluators Ranking PDF'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: pdf
+  max_filesize: ''
+  description_field: false
+field_type: file

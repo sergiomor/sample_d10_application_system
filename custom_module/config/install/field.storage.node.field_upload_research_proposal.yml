@@ -1,0 +1,23 @@
+uuid: e9ca6429-c4c6-44f5-8c7e-ab7f95915b5e
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - node
+id: node.field_upload_research_proposal
+field_name: field_upload_research_proposal
+entity_type: node
+type: file
+settings:
+  target_type: file
+  display_field: false
+  display_default: false
+  uri_scheme: public
+module: file
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

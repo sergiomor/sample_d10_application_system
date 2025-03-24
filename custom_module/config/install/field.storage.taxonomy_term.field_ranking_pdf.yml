@@ -1,0 +1,23 @@
+uuid: c72a80c8-e51c-44a8-a5b1-b34fa490b5db
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - taxonomy
+id: taxonomy_term.field_ranking_pdf
+field_name: field_ranking_pdf
+entity_type: taxonomy_term
+type: file
+settings:
+  target_type: file
+  display_field: false
+  display_default: false
+  uri_scheme: public
+module: file
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

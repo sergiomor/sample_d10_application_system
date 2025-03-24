@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\custom_module\Form;
+namespace Drupal\research_application_workflow\Form;
 
 use Drupal\Core\Form\ConfirmFormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -67,21 +67,21 @@ class ApproveRankingForm extends ConfirmFormBase {
     $this->evaluator = User::load($this->uid);
     if (!$this->evaluator) {
       $this->messenger()->addError($this->t('Evaluator not found.'));
-      return $this->redirect('custom_module.rankings_admin');
+      return $this->redirect('research_application_workflow.rankings_admin');
     }
 
     // Load the term.
     $this->term = Term::load($this->tid);
     if (!$this->term) {
       $this->messenger()->addError($this->t('Research line not found.'));
-      return $this->redirect('custom_module.rankings_admin');
+      return $this->redirect('research_application_workflow.rankings_admin');
     }
 
     // Find the ranking file.
     $this->rankingFile = $this->findRankingFile();
     if (!$this->rankingFile) {
       $this->messenger()->addError($this->t('Ranking file not found.'));
-      return $this->redirect('custom_module.rankings_admin');
+      return $this->redirect('research_application_workflow.rankings_admin');
     }
 
     // Add file information to the form.
@@ -138,7 +138,7 @@ class ApproveRankingForm extends ConfirmFormBase {
    * {@inheritdoc}
    */
   public function getCancelUrl() {
-    return new Url('custom_module.rankings_admin');
+    return new Url('research_application_workflow.rankings_admin');
   }
 
   /**
@@ -223,7 +223,7 @@ class ApproveRankingForm extends ConfirmFormBase {
       $this->messenger()->addError($this->t('Could not approve the ranking due to missing information.'));
     }
     
-    $form_state->setRedirect('custom_module.rankings_admin');
+    $form_state->setRedirect('research_application_workflow.rankings_admin');
   }
   
   /**
@@ -264,7 +264,7 @@ class ApproveRankingForm extends ConfirmFormBase {
     
     // Prepare the email
     $mailManager = \Drupal::service('plugin.manager.mail');
-    $module = 'custom_module';
+    $module = 'research_application_workflow';
     $key = 'ranking_approved';
     $langcode = $this->evaluator->getPreferredLangcode();
     $from = 'servidor@araid.es';

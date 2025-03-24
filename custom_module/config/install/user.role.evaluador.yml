@@ -1,0 +1,37 @@
+uuid: b3f1414a-7283-404d-bc3a-36621e4eea9b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.evaluation_form
+  module:
+    - entity_print
+    - entity_print_views
+    - node
+    - node_view_permissions
+    - pfdp
+id: evaluador
+label: Evaluator
+weight: -6
+is_admin: null
+permissions:
+  - 'access user profiles'
+  - 'bypass pfdp'
+  - 'bypass pfdp for temporary files'
+  - 'create evaluation_form content'
+  - 'edit own evaluation_form content'
+  - 'entity print access bundle evaluation_form'
+  - 'entity print access bundle letters'
+  - 'entity print access bundle more_information'
+  - 'entity print access bundle personal_data'
+  - 'entity print access bundle research_data'
+  - 'entity print access bundle research_line'
+  - 'entity print views access'
+  - 'view any call_for_applications content'
+  - 'view any interest content'
+  - 'view any letters content'
+  - 'view any more_information content'
+  - 'view any personal_data content'
+  - 'view any research_data content'
+  - 'view any research_line content'
+  - 'view own evaluation_form content'

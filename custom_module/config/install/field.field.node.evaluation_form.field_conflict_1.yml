@@ -1,0 +1,23 @@
+uuid: 07a6574a-87a4-4efb-8db3-13454f47febe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_conflict_1
+    - node.type.evaluation_form
+id: node.evaluation_form.field_conflict_1
+field_name: field_conflict_1
+entity_type: node
+bundle: evaluation_form
+label: 'I understand that all information related to the application and its evaluation contained in this form is to be handled as confidential.'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

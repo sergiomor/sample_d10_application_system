@@ -1,0 +1,23 @@
+uuid: 15ccc0b1-b7cf-472a-8bee-efbd40d942cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_none_above_2
+    - node.type.research_line
+id: node.research_line.field_none_above_2
+field_name: field_none_above_2
+entity_type: node
+bundle: research_line
+label: 'I CONFIRM THAT NONE OF THE ABOVE ISSUES APPLY TO MY PROPOSAL'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

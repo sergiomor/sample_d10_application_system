@@ -1,0 +1,23 @@
+uuid: 7ad904e3-b1c9-4784-9c8f-80a6469de26b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_marks_eva3
+    - node.type.interest
+id: node.interest.field_marks_eva3
+field_name: field_marks_eva3
+entity_type: node
+bundle: interest
+label: 'Marks eva3'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

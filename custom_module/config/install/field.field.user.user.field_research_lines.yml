@@ -1,0 +1,30 @@
+uuid: 15b6d5ae-5cc3-4f34-acdd-ddf6de609703
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_research_lines
+    - taxonomy.vocabulary.field_of_research
+  module:
+    - user
+id: user.user.field_research_lines
+field_name: field_research_lines
+entity_type: user
+bundle: user
+label: 'Fields of Research'
+description: 'Choose maximum 3 fields of research.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      field_of_research: field_of_research
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

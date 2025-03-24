@@ -1,0 +1,30 @@
+uuid: e650542a-3278-46b7-a4d6-223055a341a1
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_print
+    - entity_print_views
+    - node_view_permissions
+id: candidato_enviado
+label: 'Submitted candidate'
+weight: -4
+is_admin: null
+permissions:
+  - 'bypass entity print access'
+  - 'entity print access bundle evaluation_form'
+  - 'entity print access bundle letters'
+  - 'entity print access bundle more_information'
+  - 'entity print access bundle personal_data'
+  - 'entity print access bundle research_data'
+  - 'entity print access bundle research_line'
+  - 'entity print views access'
+  - 'view any call_for_applications content'
+  - 'view any evaluation_form content'
+  - 'view any interest content'
+  - 'view any page content'
+  - 'view own letters content'
+  - 'view own more_information content'
+  - 'view own personal_data content'
+  - 'view own research_data content'
+  - 'view own research_line content'

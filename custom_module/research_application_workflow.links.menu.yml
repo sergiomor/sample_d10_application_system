@@ -1,0 +1,48 @@
+research_application_workflow.application_settings:
+  title: 'Application Settings'
+  description: 'Manage application settings such as Start Date, etc.'
+  route_name: research_application_workflow.application_settings.form
+  parent: 'system.admin'
+  weight: -99
+
+research_application_workflow.rankings:
+  title: 'Rankings'
+  description: 'Manage rankings'
+  route_name: research_application_workflow.ranking_per_field
+  parent: 'system.admin'
+  weight: -60
+
+research_application_workflow.rankings_admin:
+  title: 'Rankings Approval Management'
+  description: 'Manage Rankings Approval'
+  route_name: research_application_workflow.rankings_admin
+  parent: 'system.admin'
+  weight: -59
+
+research_application_workflow.publish_evaluations:
+  title: 'Publish Evaluations'
+  description: 'Manage Publishing Evaluations'
+  route_name: research_application_workflow.publish_evaluations
+  parent: 'system.admin'
+  weight: -58
+
+research_application_workflow.download_apps:
+  title: 'Download Applications'
+  description: 'Manage Download Applications'
+  route_name: research_application_workflow.download_applications.form
+  parent: 'system.admin'
+  weight: -57
+
+research_application_workflow.download_apps_csv:
+  title: 'Download Applications CSV'
+  description: 'Manage Download Applications CSV'
+  route_name: research_application_workflow.download_csv
+  parent: 'system.admin'
+  weight: -56
+
+research_application_workflow.delete_data:
+  title: 'Delete Data'
+  description: 'Manage Delete Data'
+  route_name: research_application_workflow.delete_data.form
+  parent: 'system.admin'
+  weight: -55

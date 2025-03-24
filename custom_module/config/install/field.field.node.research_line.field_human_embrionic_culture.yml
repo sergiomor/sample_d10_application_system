@@ -1,0 +1,23 @@
+uuid: fef29a6a-90e5-438d-b018-f1387a196f99
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_human_embrionic_culture
+    - node.type.research_line
+id: node.research_line.field_human_embrionic_culture
+field_name: field_human_embrionic_culture
+entity_type: node
+bundle: research_line
+label: 'Does the proposed research on human Embryonic Stem Cells involve cells in culture?'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,23 @@
+uuid: 0d3ae9f2-b73e-46ef-a1fb-cc1b29e5299d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_total_mark
+    - node.type.evaluation_form
+id: node.evaluation_form.field_total_mark
+field_name: field_total_mark
+entity_type: node
+bundle: evaluation_form
+label: 'Total Mark'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

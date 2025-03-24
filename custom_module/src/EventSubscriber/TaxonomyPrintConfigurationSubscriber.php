@@ -1,20 +1,20 @@
 <?php
 
-namespace Drupal\custom_module\EventSubscriber;
+namespace Drupal\research_application_workflow\EventSubscriber;
 
 use Drupal\entity_print\Plugin\PrintEngineBase;
 use Drupal\entity_print\Event\PrintEvents;
 use Drupal\entity_print\Event\PreSendPrintEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
-use Drupal\custom_module\Service\RankingsManager; // Ensure correct namespace for your service
+use Drupal\research_application_workflow\Service\RankingsManager; // Ensure correct namespace for your service
 
 class TaxonomyPrintConfigurationSubscriber implements EventSubscriberInterface {
 
     /**
      * The RankingsManager service.
      *
-     * @var \Drupal\custom_module\Service\RankingsManager
+     * @var \Drupal\research_application_workflow\Service\RankingsManager
      */
      protected $rankingsManager;
 
@@ -33,7 +33,7 @@ class TaxonomyPrintConfigurationSubscriber implements EventSubscriberInterface {
         // Only apply the configuration if the first entity is a taxonomy term.
         $route = \Drupal::routeMatch()->getRouteName();
 
-        if ($route !== 'custom_module.rankings_by_field') {
+        if ($route !== 'research_application_workflow.rankings_by_field') {
             return;
         }
 

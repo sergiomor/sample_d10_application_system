@@ -1,0 +1,34 @@
+uuid: 05f79084-ab44-412b-b0e7-b55dcfaa4162
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_upload_research_proposal
+    - node.type.research_line
+  module:
+    - content_translation
+    - file
+third_party_settings:
+  content_translation:
+    translation_sync:
+      target_id: target_id
+      display: display
+      description: description
+id: node.research_line.field_upload_research_proposal
+field_name: field_upload_research_proposal
+entity_type: node
+bundle: research_line
+label: 'Upload your research proposal'
+description: 'The research proposal should be prepared according to this template: @TODO LINK.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: pdf
+  max_filesize: '18 Mb'
+  description_field: false
+field_type: file

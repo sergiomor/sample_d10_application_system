@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\custom_module\Controller;
+namespace Drupal\research_application_workflow\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Datetime\DrupalDateTime;
@@ -8,7 +8,7 @@ use Drupal\Core\Link;
 use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\custom_module\Service\RankingsManager;
+use Drupal\research_application_workflow\Service\RankingsManager;
 use Drupal\taxonomy\Entity\Term;
 
 /**
@@ -26,7 +26,7 @@ class RankingPerField extends ControllerBase {
   /**
    * The RankingsManager service.
    *
-   * @var \Drupal\custom_module\Service\RankingsManager
+   * @var \Drupal\research_application_workflow\Service\RankingsManager
    */
   protected $rankingsManager;
 
@@ -35,7 +35,7 @@ class RankingPerField extends ControllerBase {
    *
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The config factory service.
-   * @param \Drupal\custom_module\Service\RankingsManager $rankings_manager
+   * @param \Drupal\research_application_workflow\Service\RankingsManager $rankings_manager
    */
   public function __construct(ConfigFactoryInterface $config_factory,
     RankingsManager $rankings_manager) {
@@ -49,7 +49,7 @@ class RankingPerField extends ControllerBase {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('config.factory'),
-      $container->get('custom_module.rankings_manager')
+      $container->get('research_application_workflow.rankings_manager')
     );
   }
 
@@ -60,7 +60,7 @@ class RankingPerField extends ControllerBase {
    *   A render array.
    */
   public function content() {
-    $end_date = \Drupal::config('custom_module.applicationsettings')->get('end_date');
+    $end_date = \Drupal::config('research_application_workflow.applicationsettings')->get('end_date');
     if (!empty($end_date)) {
       $end_date = new DrupalDateTime($end_date);
       $now = new DrupalDateTime('now');
@@ -80,7 +80,7 @@ class RankingPerField extends ControllerBase {
 
     $items = [];
     foreach ($terms as $term) {
-      $url = Url::fromRoute('custom_module.rankings_by_field', ['tid' => $term->tid]);
+      $url = Url::fromRoute('research_application_workflow.rankings_by_field', ['tid' => $term->tid]);
       $items[] = Link::fromTextAndUrl($term->name, $url)->toRenderable();
     }
 
@@ -116,7 +116,7 @@ class RankingPerField extends ControllerBase {
         $rankings['action_form'] = [
           '#type' => 'container',
           '#attributes' => ['class' => ['form-actions']],
-          'form' => \Drupal::formBuilder()->getForm('Drupal\custom_module\Form\RankingActionForm', $tid),
+          'form' => \Drupal::formBuilder()->getForm('Drupal\research_application_workflow\Form\RankingActionForm', $tid),
         ];
     }
 
@@ -129,7 +129,7 @@ class RankingPerField extends ControllerBase {
       $rankings['approve_form'] = [
         '#type' => 'container',
         '#attributes' => ['class' => ['form-actions']],
-        'form' => \Drupal::formBuilder()->getForm('Drupal\custom_module\Form\ApproveActionForm', $tid),
+        'form' => \Drupal::formBuilder()->getForm('Drupal\research_application_workflow\Form\ApproveActionForm', $tid),
       ];
     }
     
@@ -137,7 +137,7 @@ class RankingPerField extends ControllerBase {
     $rankings['back_button'] = [
       '#type' => 'link',
       '#title' => $this->t('Back to Fields of Research'),
-      '#url' => Url::fromRoute('custom_module.ranking_per_field'),
+      '#url' => Url::fromRoute('research_application_workflow.ranking_per_field'),
       '#attributes' => [
         'class' => ['button', 'button--primary'],
       ],

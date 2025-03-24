@@ -1,0 +1,19 @@
+uuid: 9df7c15e-45a6-46b3-8b6c-f6b92aa56885
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_e_mail
+    - node.type.interest
+id: node.interest.field_e_mail
+field_name: field_e_mail
+entity_type: node
+bundle: interest
+label: E-mail
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

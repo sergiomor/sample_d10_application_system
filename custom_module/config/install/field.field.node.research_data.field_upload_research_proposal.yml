@@ -1,0 +1,34 @@
+uuid: a628e190-0000-49e1-8c2c-f9945f15df4e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_upload_research_proposal
+    - node.type.research_data
+  module:
+    - content_translation
+    - file
+third_party_settings:
+  content_translation:
+    translation_sync:
+      target_id: target_id
+      display: display
+      description: description
+id: node.research_data.field_upload_research_proposal
+field_name: field_upload_research_proposal
+entity_type: node
+bundle: research_data
+label: 'Upload your research proposal'
+description: 'The research proposal should be prepared according to this <a href="/sites/default/files/convocatorias/ResearchProposal_Template.pdf" target="_blank">template</a>.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: pdf
+  max_filesize: '18 Mb'
+  description_field: false
+field_type: file

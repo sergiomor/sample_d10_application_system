@@ -1,0 +1,19 @@
+uuid: c96fc9bb-f848-4991-a1c5-ea52fa427702
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_research_center_or_group
+    - node.type.interest
+id: node.interest.field_research_center_or_group
+field_name: field_research_center_or_group
+entity_type: node
+bundle: interest
+label: 'Research Center or Group'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

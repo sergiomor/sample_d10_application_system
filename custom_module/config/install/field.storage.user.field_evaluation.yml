@@ -1,0 +1,20 @@
+uuid: 50cd0826-2dd7-40fa-80f4-1e491c987cc6
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_evaluation
+field_name: field_evaluation
+entity_type: user
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 3
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

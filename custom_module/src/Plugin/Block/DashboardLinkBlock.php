@@ -1,6 +1,6 @@
 <?php 
 
-namespace Drupal\custom_module\Plugin\Block;
+namespace Drupal\research_application_workflow\Plugin\Block;
 
 use Drupal\Core\Url;
 use Drupal\Core\Block\BlockBase;

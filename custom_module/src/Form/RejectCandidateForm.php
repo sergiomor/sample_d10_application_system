@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\custom_module\Form;
+namespace Drupal\research_application_workflow\Form;
 
 use Drupal\Core\Form\ConfirmFormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -38,7 +38,7 @@ class RejectCandidateForm extends ConfirmFormBase {
     $candidate = User::load($this->candidateId);
     if (!$candidate) {
       $this->messenger()->addError($this->t('Candidate not found.'));
-      return new RedirectResponse(Url::fromRoute('custom_module.expressions_interest')->toString());
+      return new RedirectResponse(Url::fromRoute('research_application_workflow.expressions_interest')->toString());
     }
     
     // Get candidate's personal data
@@ -73,7 +73,7 @@ class RejectCandidateForm extends ConfirmFormBase {
    * {@inheritdoc}
    */
   public function getCancelUrl() {
-    return Url::fromRoute('custom_module.expressions_interest');
+    return Url::fromRoute('research_application_workflow.expressions_interest');
   }
 
   /**
@@ -98,7 +98,7 @@ class RejectCandidateForm extends ConfirmFormBase {
     $candidate = User::load($this->candidateId);
     if (!$candidate) {
       $this->messenger()->addError($this->t('Candidate not found.'));
-      $form_state->setRedirect('custom_module.expressions_interest');
+      $form_state->setRedirect('research_application_workflow.expressions_interest');
       return;
     }
     
@@ -135,7 +135,7 @@ class RejectCandidateForm extends ConfirmFormBase {
     $this->messenger()->addStatus($this->t('The candidate has been rejected and removed from your list.'));
     
     // Redirect back to expressions of interest page
-    $form_state->setRedirect('custom_module.expressions_interest');
+    $form_state->setRedirect('research_application_workflow.expressions_interest');
   }
   
   /**
@@ -155,10 +155,10 @@ class RejectCandidateForm extends ConfirmFormBase {
     
     // Prepare the email
     $mailManager = \Drupal::service('plugin.manager.mail');
-    $module = 'custom_module';
+    $module = 'research_application_workflow';
     $key = 'candidate_rejection';
     $langcode = $user->getPreferredLangcode();
-    $from = 'servidor@araid.es';
+    $from = 'mail@example.com';
     
     // Get the candidate's name and researcher's name
     $name = $user->getAccountName();

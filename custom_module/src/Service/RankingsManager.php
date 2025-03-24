@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\custom_module\Service;
+namespace Drupal\research_application_workflow\Service;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\user\Entity\User;
@@ -354,7 +354,7 @@ class RankingsManager {
         $rows[] = $dev_row;
     }
 
-    $end_date = \Drupal::config('custom_module.applicationsettings')->get('end_date');;
+    $end_date = \Drupal::config('research_application_workflow.applicationsettings')->get('end_date');;
     $year = '';
     if (!empty($end_date)) {
       $date = new DrupalDateTime($end_date);
@@ -390,7 +390,7 @@ class RankingsManager {
         '#attributes' => ['class' => ['ranking-table']],
         '#empty' => $this->t('No rankings available for this field.'),
         '#attached' => [
-          'library' => ['custom_module/ranking-styles'],
+          'library' => ['research_application_workflow/ranking-styles'],
           'html_head' => [
             [
               [

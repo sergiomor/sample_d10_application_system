@@ -1,0 +1,23 @@
+uuid: c04f3cd0-0f89-44a8-8481-8b80acfc0b16
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_difference
+    - node.type.interest
+id: node.interest.field_difference
+field_name: field_difference
+entity_type: node
+bundle: interest
+label: Difference
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

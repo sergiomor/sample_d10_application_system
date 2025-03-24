@@ -1,0 +1,23 @@
+uuid: 46e6a2fb-e27b-4d06-a464-129cf9a6f4e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_research_animals
+    - node.type.research_line
+id: node.research_line.field_research_animals
+field_name: field_research_animals
+entity_type: node
+bundle: research_line
+label: 'Does the proposed research involve research on animals?'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

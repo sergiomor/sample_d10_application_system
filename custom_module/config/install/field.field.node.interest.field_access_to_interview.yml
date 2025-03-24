@@ -1,0 +1,23 @@
+uuid: a1f9d27e-f5f1-47b6-9467-2d7716475bc7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_access_to_interview
+    - node.type.interest
+id: node.interest.field_access_to_interview
+field_name: field_access_to_interview
+entity_type: node
+bundle: interest
+label: 'Access to interview'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

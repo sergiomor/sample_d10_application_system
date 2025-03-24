@@ -1,0 +1,18 @@
+uuid: 885d8557-2aa1-42bd-9f29-13d8c1f542ea
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_does_the_proposed_research
+field_name: field_does_the_proposed_research
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

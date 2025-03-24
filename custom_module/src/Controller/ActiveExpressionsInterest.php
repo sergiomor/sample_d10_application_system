@@ -1,6 +1,6 @@
 <?php 
 
-namespace Drupal\custom_module\Controller;
+namespace Drupal\research_application_workflow\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\user\Entity\User;
@@ -58,7 +58,7 @@ use Drupal\Core\Url;
                               
                               if ($show_reject_link) {
                                 // Add reject link
-                                $reject_url = Url::fromRoute('custom_module.reject_candidate', ['uid' => $candidate['target_id']])->toString();
+                                $reject_url = Url::fromRoute('research_application_workflow.reject_candidate', ['uid' => $candidate['target_id']])->toString();
                                 $link_upload = '<a href="' . $reject_url . '" class="reject-link">' . 
                                   t('Reject Candidate') . '</a>';
                               } else if (($c_fid) || ($i_node->get('field_status')->value !== 'finished')) {
@@ -75,7 +75,7 @@ use Drupal\Core\Url;
                            $link =  '<a href="' . Url::fromUserInput('/node/add/interest?key=' 
                            . $candidate['target_id'] . '')->toString() . '">' . $ei . '</a>';
                            
-                           $reject_url = Url::fromRoute('custom_module.reject_candidate', ['uid' => $candidate['target_id']])->toString();
+                           $reject_url = Url::fromRoute('research_application_workflow.reject_candidate', ['uid' => $candidate['target_id']])->toString();
                            $link_upload = '<a href="' . $reject_url . '" class="reject-link">' . 
                              t('Reject Candidate') . '</a>';
                         }

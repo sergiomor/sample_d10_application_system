@@ -1,0 +1,31 @@
+uuid: 3a9cba50-ea84-46f8-a91f-81b1764b22ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_eval_4
+    - node.type.evaluation_form
+    - paragraphs.paragraphs_type.evaluation_1
+  module:
+    - entity_reference_revisions
+id: node.evaluation_form.field_eval_4
+field_name: field_eval_4
+entity_type: node
+bundle: evaluation_form
+label: "Research and development projects, transfer of knowledge, divulgation, exploitation of results, patents.\t"
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      evaluation_1: evaluation_1
+    negate: 0
+    target_bundles_drag_drop:
+      evaluation_1:
+        weight: 2
+        enabled: true
+field_type: entity_reference_revisions

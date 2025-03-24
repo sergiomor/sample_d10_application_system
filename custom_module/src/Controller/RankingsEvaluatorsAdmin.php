@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\custom_module\Controller;
+namespace Drupal\research_application_workflow\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Url;
@@ -82,7 +82,7 @@ class RankingsEvaluatorsAdmin extends ControllerBase {
           // Action links
           $output .= '<td>';
           if (!$is_approved) {
-            $approve_url = Url::fromRoute('custom_module.approve_ranking', [
+            $approve_url = Url::fromRoute('research_application_workflow.approve_ranking', [
               'uid' => $evaluator->id(),
               'tid' => $term->tid,
             ])->toString();

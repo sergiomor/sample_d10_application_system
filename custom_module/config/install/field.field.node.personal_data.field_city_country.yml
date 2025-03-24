@@ -1,0 +1,19 @@
+uuid: cd563038-85e5-49fd-a348-0f0a99e26187
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_city_country
+    - node.type.personal_data
+id: node.personal_data.field_city_country
+field_name: field_city_country
+entity_type: node
+bundle: personal_data
+label: City/country
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

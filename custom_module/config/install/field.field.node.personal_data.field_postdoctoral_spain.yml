@@ -1,0 +1,23 @@
+uuid: 72e49c78-dfa0-4c13-915f-0208925c56bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_postdoctoral_spain
+    - node.type.personal_data
+id: node.personal_data.field_postdoctoral_spain
+field_name: field_postdoctoral_spain
+entity_type: node
+bundle: personal_data
+label: 'Years of  postdoctoral experience outside Spain'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

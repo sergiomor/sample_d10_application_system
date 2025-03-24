@@ -1,0 +1,23 @@
+uuid: df2974e8-f2bd-4748-a5dd-b64bd5a0e7c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_postdoctoral_aragon
+    - node.type.personal_data
+id: node.personal_data.field_postdoctoral_aragon
+field_name: field_postdoctoral_aragon
+entity_type: node
+bundle: personal_data
+label: 'Years of  postdoctoral experience outside Aragón'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

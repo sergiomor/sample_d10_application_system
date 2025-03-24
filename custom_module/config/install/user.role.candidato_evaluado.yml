@@ -1,0 +1,9 @@
+uuid: 7d095cc6-ce5b-4fc3-8659-141ef13250e2
+langcode: en
+status: true
+dependencies: {  }
+id: candidato_evaluado
+label: 'Evaluated Candidate'
+weight: 0
+is_admin: null
+permissions: {  }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\custom_module\Form;
+namespace Drupal\research_application_workflow\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -79,7 +79,7 @@ class UploadRankingApproval extends FormBase {
             $form['back_button'] = [
                 '#type' => 'link',
                 '#title' => $this->t('Back to Rankings'),
-                '#url' => Url::fromRoute('custom_module.applications_evaluator'),
+                '#url' => Url::fromRoute('research_application_workflow.applications_evaluator'),
                 '#attributes' => [
                 'class' => ['button', 'button--primary'],
                 ],
@@ -179,7 +179,7 @@ class UploadRankingApproval extends FormBase {
             ->getCurrentRequest();
             $current_request->query->set(
                 'destination',
-                \Drupal\Core\Url::fromRoute('custom_module.applications_evaluator')
+                \Drupal\Core\Url::fromRoute('research_application_workflow.applications_evaluator')
                 ->toString()
                 ); 
             //notify admin
@@ -192,10 +192,10 @@ class UploadRankingApproval extends FormBase {
      */
     public function NotifyAdmin($e_user) {
         $mailManager = \Drupal::service('plugin.manager.mail');
-        $module = 'custom_module';
+        $module = 'research_application_workflow';
         $key = 'admin_ranking_notify';
-        $to = \Drupal::config('custom_module.applicationsettings')->get('email');
-        $from = 'servidor@araid.es';
+        $to = \Drupal::config('research_application_workflow.applicationsettings')->get('email');
+        $from = 'mail@example.com';
         $params = '
             <p>The evaluator ' . $e_user->getAccountName() . ' submitted a Ranking Approval.</p>
             <br>

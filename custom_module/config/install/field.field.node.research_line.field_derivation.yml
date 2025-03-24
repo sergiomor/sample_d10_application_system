@@ -1,0 +1,23 @@
+uuid: bae3f1ae-fa39-4af2-a502-22fca8d61f50
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_derivation
+    - node.type.research_line
+id: node.research_line.field_derivation
+field_name: field_derivation
+entity_type: node
+bundle: research_line
+label: 'Does the proposed research on Human Embryonic Stem Cells involve the derivation of cells from Embryos?'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

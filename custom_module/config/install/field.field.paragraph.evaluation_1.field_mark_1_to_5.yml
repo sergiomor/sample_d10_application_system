@@ -1,0 +1,23 @@
+uuid: 29c38495-c124-44e5-82ac-7017da9c77c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_mark_1_to_5
+    - paragraphs.paragraphs_type.evaluation_1
+id: paragraph.evaluation_1.field_mark_1_to_5
+field_name: field_mark_1_to_5
+entity_type: paragraph
+bundle: evaluation_1
+label: Mark
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0.0
+  max: 5.0
+  prefix: ''
+  suffix: ''
+field_type: decimal

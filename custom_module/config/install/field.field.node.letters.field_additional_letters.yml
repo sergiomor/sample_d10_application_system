@@ -1,0 +1,27 @@
+uuid: 0221a863-77d8-40c4-90ad-75e65e0a84ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_additional_letters
+    - node.type.letters
+  module:
+    - file
+id: node.letters.field_additional_letters
+field_name: field_additional_letters
+entity_type: node
+bundle: letters
+label: 'Additional Letters'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: pdf
+  max_filesize: ''
+  description_field: false
+field_type: file

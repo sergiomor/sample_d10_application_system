@@ -1,0 +1,23 @@
+uuid: 42fb6c94-b6c1-4a35-b818-8bdf87bac440
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_animals_transgenic
+    - node.type.research_line
+id: node.research_line.field_animals_transgenic
+field_name: field_animals_transgenic
+entity_type: node
+bundle: research_line
+label: 'Are those animals transgenic small laboratory animals?'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\custom_module\Form;
+namespace Drupal\research_application_workflow\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -126,20 +126,20 @@ class UploadExpressionInterest extends FormBase {
                 ->getCurrentRequest();
                 $current_request->query->set(
                     'destination',
-                    \Drupal\Core\Url::fromRoute('custom_module.expressions_interest')
+                    \Drupal\Core\Url::fromRoute('research_application_workflow.expressions_interest')
                     ->toString()
                 );
             } catch (\Exception $e) {
                 \Drupal::messenger()->addError($this->t('Error uploading file: @message', ['@message' => $e->getMessage()]));
-                \Drupal::logger('custom_module')->error('Error uploading Expression of Interest: @message', ['@message' => $e->getMessage()]);
+                \Drupal::logger('research_application_workflow')->error('Error uploading Expression of Interest: @message', ['@message' => $e->getMessage()]);
             }
             
             //notify candidate
             $mailManager = \Drupal::service('plugin.manager.mail');
-            $module = 'custom_module';
+            $module = 'research_application_workflow';
             $key = 'c_EI_notify';
             $to = $c_user->getEmail();
-            $from = 'servidor@araid.es';
+            $from = 'mail@example.com';
             $params = '';
             $language_code = \Drupal::LanguageManager()->getDefaultLanguage()->getId();
             $send_now = TRUE;

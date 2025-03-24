@@ -1,0 +1,29 @@
+uuid: e140c6a0-4a4f-4a9a-a112-9e3c7d27a140
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_institution_support
+    - node.type.research_line
+    - taxonomy.vocabulary.institutions
+id: node.research_line.field_institution_support
+field_name: field_institution_support
+entity_type: node
+bundle: research_line
+label: Institution
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      institutions: institutions
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

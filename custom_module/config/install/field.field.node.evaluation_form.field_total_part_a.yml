@@ -1,0 +1,23 @@
+uuid: 87b2511a-beee-4986-990e-241beab8d3fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_total_part_a
+    - node.type.evaluation_form
+id: node.evaluation_form.field_total_part_a
+field_name: field_total_part_a
+entity_type: node
+bundle: evaluation_form
+label: 'Total Part A'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

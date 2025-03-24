@@ -1,0 +1,23 @@
+uuid: 6b245caa-7975-411b-ad9b-281081cb4968
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - user
+id: user.field_signed_ei_fid
+field_name: field_signed_ei_fid
+entity_type: user
+type: file
+settings:
+  target_type: file
+  display_field: false
+  display_default: false
+  uri_scheme: private
+module: file
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

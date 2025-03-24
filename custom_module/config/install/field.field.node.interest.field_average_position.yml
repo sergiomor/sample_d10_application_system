@@ -1,0 +1,23 @@
+uuid: cfb1a445-ff45-4d83-8194-f78b1f4f1ceb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_average_position
+    - node.type.interest
+id: node.interest.field_average_position
+field_name: field_average_position
+entity_type: node
+bundle: interest
+label: 'Average position'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,23 @@
+uuid: 9ba02a1b-30c5-491a-afb1-e9dfcbc044ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_research_involve_data
+    - node.type.research_line
+id: node.research_line.field_research_involve_data
+field_name: field_research_involve_data
+entity_type: node
+bundle: research_line
+label: 'Does the proposed research involve Human data collection?'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

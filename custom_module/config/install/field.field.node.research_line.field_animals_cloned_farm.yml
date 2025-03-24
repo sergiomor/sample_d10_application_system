@@ -1,0 +1,23 @@
+uuid: 1e2bbdc8-3ea8-4e30-bbe0-613d63021b64
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_animals_cloned_farm
+    - node.type.research_line
+id: node.research_line.field_animals_cloned_farm
+field_name: field_animals_cloned_farm
+entity_type: node
+bundle: research_line
+label: 'Are those animals cloned farm animals?'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,187 @@
+research_application_workflow.form:
+  path: '/candidate/expressions-of-interest'
+  defaults:
+    _title: 'Expressions of Interest'
+    _form: '\Drupal\research_application_workflow\Form\ExpressionsInterest'
+  requirements:
+    _access: 'TRUE'
+    _role: candidato+candidato_enviado+administrator
+
+research_application_workflow.expressions_interest:
+  path: '/researcher/expressions-of-interest'
+  defaults:
+    _title: 'Active Expressions of Interest'
+    _controller: '\Drupal\research_application_workflow\Controller\ActiveExpressionsInterest::dashboardIr'
+  requirements:
+    _access: 'TRUE'
+    _role: investigador_responsable+administrator
+  options:
+    no_cache: 'TRUE'    
+
+research_application_workflow.upload_expression_interest.form:
+  path: '/researcher/expressions-of-interest/form/{uid}'
+  defaults:
+    _title: 'Submit the signed Expression of Interest'
+    _form: '\Drupal\research_application_workflow\Form\UploadExpressionInterest'
+  requirements:
+    _access: 'TRUE'
+    _role: investigador_responsable+administrator
+
+research_application_workflow.submit_application.form:
+  path: '/candidate/submit-application/{uid}'
+  defaults:
+    _title: 'Submit Application'
+    _form: '\Drupal\research_application_workflow\Form\SubmitApplication'
+  requirements:
+    _access: 'TRUE'
+    _role: candidato+candidato_enviado
+
+research_application_workflow.application_settings.form:
+  path: '/admin/config/application-settings'
+  defaults:
+    _title: 'Application Settings'
+    _form: '\Drupal\research_application_workflow\Form\ApplicationSettings'
+  requirements:
+    _access: 'TRUE'
+    _role: administrator
+  options:
+    no_cache: 'TRUE'
+
+research_application_workflow.download_applications.form:
+  path: '/admin/config/download-applications'
+  defaults:
+    _title: 'Download Applications'
+    _form: '\Drupal\research_application_workflow\Form\DownloadApplications'
+  requirements:
+    _access: 'TRUE'
+    _role: administrator
+
+research_application_workflow.delete_data.form:
+  path: '/admin/config/delete-data'
+  defaults:
+    _title: 'Delete Data'
+    _form: '\Drupal\research_application_workflow\Form\DeleteData'
+  requirements:
+    _access: 'TRUE'
+    _role: administrator
+  options:
+    no_cache: 'TRUE'
+
+research_application_workflow.applications_evaluator:
+  path: '/evaluator/applications'
+  defaults:
+    _title: 'Evaluations'
+    _controller: '\Drupal\research_application_workflow\Controller\ApplicationsEval::DashboardEval'
+  requirements:
+    _access: 'TRUE'
+    _role: evaluador
+  options:
+    no_cache: 'TRUE'    
+
+research_application_workflow.upload_evaluation.form:
+  path: '/evaluation/form/{uid}'
+  defaults:
+    _title: 'Submit the signed evaluation form'
+    _form: '\Drupal\research_application_workflow\Form\UploadEvaluation'
+  requirements:
+    _access: 'TRUE'
+    _role: evaluador+administrator
+
+research_application_workflow.upload_ranking_approval.form:
+  path: '/ranking-approval/form/{tid}'
+  defaults:
+    _title: 'Ranking Approval Submission'
+    _form: '\Drupal\research_application_workflow\Form\UploadRankingApproval'
+  requirements:
+    _access: 'TRUE'
+    _role: evaluador+administrator
+
+research_application_workflow.applications_admin:
+  path: '/administrator/applications'
+  defaults:
+    _title: 'Applications Management'
+    _controller: '\Drupal\research_application_workflow\Controller\ApplicationsAdmin::DashboardAdmin'
+  requirements:
+    _access: 'TRUE'
+    _role: administrator
+  options:
+    no_cache: 'TRUE'
+
+research_application_workflow.rankings_admin:
+  path: '/admin/config/ranking-evaluators'
+  defaults:
+    _title: 'Rankings per Evaluator Management'
+    _controller: '\Drupal\research_application_workflow\Controller\RankingsEvaluatorsAdmin::RankingsAdmin'
+  requirements:
+    _permission: 'access administration pages'
+    _role: 'administrator'
+
+research_application_workflow.evaluation_candidate:
+  path: '/candidate/evaluation'
+  defaults:
+    _title: 'Evaluation'
+    _controller: '\Drupal\research_application_workflow\Controller\CandidateEvaluation::AppEvaluation'
+  requirements:
+    _access: 'TRUE'
+    _role: candidato_evaluado
+  options:
+    no_cache: 'TRUE'
+
+research_application_workflow.ranking_per_field:
+  path: '/admin/config/ranking'
+  defaults:
+    _title: 'Rankings by Field of Research'
+    _controller: '\Drupal\research_application_workflow\Controller\RankingPerField::content'
+  requirements:
+    _permission: 'access administration pages'
+    _role: 'administrator'
+
+research_application_workflow.rankings_by_field:
+  path: '/admin/config/ranking/{tid}'
+  defaults:
+    _controller: '\Drupal\research_application_workflow\Controller\RankingPerField::fieldRankings'
+  requirements:
+    _permission: 'access administration pages'
+    _role: 'administrator'
+
+research_application_workflow.approve_ranking:
+  path: '/admin/config/approve-ranking/{uid}/{tid}'
+  defaults:
+    _title: 'Approve Ranking'
+    _form: '\Drupal\research_application_workflow\Form\ApproveRankingForm'
+  requirements:
+    _permission: 'access administration pages'
+    _role: 'administrator'
+
+research_application_workflow.publish_evaluations:
+  path: '/admin/config/publish-evaluations'
+  defaults:
+    _title: 'Publish Evaluations'
+    _form: '\Drupal\research_application_workflow\Form\PublishEvaluationsForm'
+  requirements:
+    _permission: 'access administration pages'
+    _role: 'administrator'
+  options:
+    no_cache: 'TRUE'
+
+research_application_workflow.download_csv:
+  path: '/admin/config/download-csv'
+  defaults:
+    _title: 'Download Candidates CSV'
+    _controller: '\Drupal\research_application_workflow\Controller\DownloadCandidatesCsv::downloadCsv'
+  requirements:
+    _permission: 'access administration pages'
+    _role: 'administrator'
+  options:
+    no_cache: 'TRUE'
+
+research_application_workflow.reject_candidate:
+  path: '/researcher/reject-candidate/{uid}'
+  defaults:
+    _title: 'Reject Candidate'
+    _form: '\Drupal\research_application_workflow\Form\RejectCandidateForm'
+  requirements:
+    _access: 'TRUE'
+    _role: investigador_responsable+administrator
+  options:
+    no_cache: 'TRUE'

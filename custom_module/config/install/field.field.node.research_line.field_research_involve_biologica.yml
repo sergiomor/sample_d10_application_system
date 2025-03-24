@@ -1,0 +1,23 @@
+uuid: 92e17c73-7a2f-4fe7-90fd-b7fbcdc63334
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_research_involve_biologica
+    - node.type.research_line
+id: node.research_line.field_research_involve_biologica
+field_name: field_research_involve_biologica
+entity_type: node
+bundle: research_line
+label: 'Does the proposed research involve Human biological samples?'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

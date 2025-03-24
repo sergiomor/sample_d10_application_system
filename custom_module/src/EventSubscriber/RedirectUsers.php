@@ -1,5 +1,5 @@
 <?php
-namespace Drupal\custom_module\EventSubscriber;
+namespace Drupal\research_application_workflow\EventSubscriber;
 
 use Drupal\Core\Url;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

@@ -1,0 +1,23 @@
+uuid: 4346f5bc-c3d2-48e0-b197-bfebb9fda1fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_average
+    - node.type.interest
+id: node.interest.field_average
+field_name: field_average
+entity_type: node
+bundle: interest
+label: Average
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

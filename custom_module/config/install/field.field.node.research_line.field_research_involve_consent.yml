@@ -1,0 +1,23 @@
+uuid: 5a459e48-8f4b-446a-b65f-9e3527818687
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_research_involve_consent
+    - node.type.research_line
+id: node.research_line.field_research_involve_consent
+field_name: field_research_involve_consent
+entity_type: node
+bundle: research_line
+label: 'Does the proposed research involve persons not able to give consent?'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

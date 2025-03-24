@@ -1,0 +1,23 @@
+uuid: 9409d979-6009-434e-bbb2-8cca5fdae0f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_research_involve_genetic_d
+    - node.type.research_line
+id: node.research_line.field_research_involve_genetic_d
+field_name: field_research_involve_genetic_d
+entity_type: node
+bundle: research_line
+label: 'Does the proposed research involve processing of genetic information or personal data?'
+description: '(e.g. health, sexual lifestyle, ethnicity, political opinion, religious or philosophical conviction)'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,29 @@
+uuid: c2306220-ecf2-4ade-b73a-44a191b02171
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_institution_support
+    - node.type.research_data
+    - taxonomy.vocabulary.institutions
+id: node.research_data.field_institution_support
+field_name: field_institution_support
+entity_type: node
+bundle: research_data
+label: Institution
+description: 'If your host institution does not appear in the list, please contact convocatorias@araid.es.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      institutions: institutions
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

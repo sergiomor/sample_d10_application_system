@@ -1,0 +1,19 @@
+uuid: fdce6027-4037-4f2a-a34b-fbd1f7131579
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_first_degree
+    - node.type.personal_data
+id: node.personal_data.field_first_degree
+field_name: field_first_degree
+entity_type: node
+bundle: personal_data
+label: 'First degree'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

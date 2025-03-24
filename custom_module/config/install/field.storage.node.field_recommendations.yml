@@ -1,0 +1,19 @@
+uuid: d082d26d-efdd-4564-a26e-d7c565ff181d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_recommendations
+field_name: field_recommendations
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

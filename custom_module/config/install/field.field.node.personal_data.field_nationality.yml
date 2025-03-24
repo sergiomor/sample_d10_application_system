@@ -1,0 +1,19 @@
+uuid: 049b314a-3587-428a-b24d-965bb5df20b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_nationality
+    - node.type.personal_data
+id: node.personal_data.field_nationality
+field_name: field_nationality
+entity_type: node
+bundle: personal_data
+label: Nationality
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\custom_module\Form;
+namespace Drupal\research_application_workflow\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -74,7 +74,7 @@ class FieldOfResearchFilterForm extends FormBase {
    * Submit handler for the reset button.
    */
   public function resetSubmit(array &$form, FormStateInterface $form_state) {
-    $form_state->setRedirect('custom_module.applications_admin');
+    $form_state->setRedirect('research_application_workflow.applications_admin');
   }
 
   /**
@@ -84,7 +84,7 @@ class FieldOfResearchFilterForm extends FormBase {
     $field_of_research = $form_state->getValue('field_of_research');
     
     // If not using AJAX, redirect to the same page with the filter parameter
-    $url = Url::fromRoute('custom_module.applications_admin', [], 
+    $url = Url::fromRoute('research_application_workflow.applications_admin', [], 
       ['query' => ['field_of_research' => $field_of_research]])->toString();
     
     $response = new RedirectResponse($url);

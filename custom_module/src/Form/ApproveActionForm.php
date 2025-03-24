@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\custom_module\Form;
+namespace Drupal\research_application_workflow\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -96,7 +96,7 @@ class ApproveActionForm extends FormBase {
       return TRUE;
     }
     catch (\Exception $e) {
-      \Drupal::logger('custom_module')->error('PDF generation failed: @message', ['@message' => $e->getMessage()]);
+      \Drupal::logger('research_application_workflow')->error('PDF generation failed: @message', ['@message' => $e->getMessage()]);
       return FALSE;
     }
   }
@@ -118,14 +118,14 @@ class ApproveActionForm extends FormBase {
         ->load($tid);
       
       if (!$term) {
-        \Drupal::logger('custom_module')->error('Term @tid not found', ['@tid' => $tid]);
+        \Drupal::logger('research_application_workflow')->error('Term @tid not found', ['@tid' => $tid]);
         return FALSE;
       }
       
       // Check if term has a ranking PDF (meaning it's approved)
       $fid = $term->get('field_ranking_pdf')->target_id;
       if (!$fid) {
-        \Drupal::logger('custom_module')->notice('No ranking PDF for term @tid, skipping permission update', ['@tid' => $tid]);
+        \Drupal::logger('research_application_workflow')->notice('No ranking PDF for term @tid, skipping permission update', ['@tid' => $tid]);
         return TRUE; // No PDF, so nothing to do
       }
       
@@ -152,7 +152,7 @@ class ApproveActionForm extends FormBase {
       }
 
       if (empty($candidate_ids)) {
-        \Drupal::logger('custom_module')->notice('No candidates found for term @tid', ['@tid' => $tid]);
+        \Drupal::logger('research_application_workflow')->notice('No candidates found for term @tid', ['@tid' => $tid]);
         return TRUE;
       }
 
@@ -194,7 +194,7 @@ class ApproveActionForm extends FormBase {
                 $node->save();
                 $count++;
                 
-                \Drupal::logger('custom_module')->notice(
+                \Drupal::logger('research_application_workflow')->notice(
                   'Evaluation form @nid locked for candidate @cid and evaluator @eid', 
                   [
                     '@nid' => $nid,
@@ -221,7 +221,7 @@ class ApproveActionForm extends FormBase {
       return TRUE;
     }
     catch (\Exception $e) {
-      \Drupal::logger('custom_module')->error('Failed to update evaluation permissions: @message', ['@message' => $e->getMessage()]);
+      \Drupal::logger('research_application_workflow')->error('Failed to update evaluation permissions: @message', ['@message' => $e->getMessage()]);
       return FALSE;
     }
   }
@@ -256,17 +256,17 @@ class ApproveActionForm extends FormBase {
       return TRUE;
     }
     catch (\Exception $e) {
-      \Drupal::logger('custom_module')->error('Failed to notify evaluator: @message', ['@message' => $e->getMessage()]);
+      \Drupal::logger('research_application_workflow')->error('Failed to notify evaluator: @message', ['@message' => $e->getMessage()]);
       return FALSE;
     }
   }
 
   function SendEmailEvaluator($email, $term_name) {
     $mailManager = \Drupal::service('plugin.manager.mail');
-    $module = 'custom_module';
+    $module = 'research_application_workflow';
     $key = 'evaluator_ranking_approval_notify';
     $to = $email;
-    $from = 'servidor@araid.es';
+    $from = 'mail@example.com';
     $params = '
         <p>Rankings for '  .$term_name . 
         ' ready for Approval.</p>

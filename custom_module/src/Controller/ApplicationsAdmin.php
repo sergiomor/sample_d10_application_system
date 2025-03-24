@@ -1,6 +1,6 @@
 <?php 
 
-namespace Drupal\custom_module\Controller;
+namespace Drupal\research_application_workflow\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Url;
@@ -16,7 +16,7 @@ use Drupal\taxonomy\Entity\Term;
             $field_of_research_filter = \Drupal::request()->query->get('field_of_research');
             
             // Build the filter form
-            $filter_form = \Drupal::formBuilder()->getForm('Drupal\custom_module\Form\FieldOfResearchFilterForm', $field_of_research_filter);
+            $filter_form = \Drupal::formBuilder()->getForm('Drupal\research_application_workflow\Form\FieldOfResearchFilterForm', $field_of_research_filter);
             
             // Get the filtered results
             $results = $this->getFilteredResults($field_of_research_filter);
@@ -290,7 +290,7 @@ use Drupal\taxonomy\Entity\Term;
         $form = [
             '#type' => 'form',
             '#method' => 'get',
-            '#action' => Url::fromRoute('custom_module.applications_admin')->toString(),
+            '#action' => Url::fromRoute('research_application_workflow.applications_admin')->toString(),
             'field_of_research' => [
                 '#type' => 'select',
                 '#title' => $this->t('Filter by Field of Research'),
@@ -304,7 +304,7 @@ use Drupal\taxonomy\Entity\Term;
             'reset' => [
                 '#type' => 'link',
                 '#title' => $this->t('Reset'),
-                '#url' => Url::fromRoute('custom_module.applications_admin'),
+                '#url' => Url::fromRoute('research_application_workflow.applications_admin'),
                 '#attributes' => [
                     'class' => ['button'],
                 ],

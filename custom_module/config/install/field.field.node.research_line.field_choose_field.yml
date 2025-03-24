@@ -1,0 +1,29 @@
+uuid: 0504c9cb-4836-4506-9b63-fd740fa206ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_choose_field
+    - node.type.research_line
+    - taxonomy.vocabulary.field_of_research
+id: node.research_line.field_choose_field
+field_name: field_choose_field
+entity_type: node
+bundle: research_line
+label: "Choose the field that best matches the project's field of research"
+description: 'If your host institution does not appear in the list, please contact convocatorias@araid.es.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      field_of_research: field_of_research
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

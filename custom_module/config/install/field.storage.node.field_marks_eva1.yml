@@ -1,0 +1,20 @@
+uuid: 65ec4f8c-2e4d-4551-9a65-1c6b8ec646fd
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_marks_eva1
+field_name: field_marks_eva1
+entity_type: node
+type: decimal
+settings:
+  precision: 10
+  scale: 1
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

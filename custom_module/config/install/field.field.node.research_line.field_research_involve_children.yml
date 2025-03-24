@@ -1,0 +1,23 @@
+uuid: 3a0bc53d-b4f8-4153-b735-71e87482a39f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_research_involve_children
+    - node.type.research_line
+id: node.research_line.field_research_involve_children
+field_name: field_research_involve_children
+entity_type: node
+bundle: research_line
+label: 'Does the proposed research involve children?'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

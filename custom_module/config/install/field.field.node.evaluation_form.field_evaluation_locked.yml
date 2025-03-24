@@ -1,0 +1,23 @@
+uuid: 6f426074-9faa-4939-afae-91e9d0f761ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_evaluation_locked
+    - node.type.evaluation_form
+id: node.evaluation_form.field_evaluation_locked
+field_name: field_evaluation_locked
+entity_type: node
+bundle: evaluation_form
+label: 'Evaluation Locked'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

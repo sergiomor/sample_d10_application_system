@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\custom_module\Form;
+namespace Drupal\research_application_workflow\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -15,7 +15,7 @@ class ApplicationSettings extends ConfigFormBase {
    *
    * @var string
    */
-    const SETTINGS = 'custom_module.applicationsettings';
+    const SETTINGS = 'research_application_workflow.applicationsettings';
  
     /**
      * {@inheritdoc}

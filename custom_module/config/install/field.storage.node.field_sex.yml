@@ -1,0 +1,30 @@
+uuid: 9d2ff602-5a42-4ca3-b5a1-34831c132bec
+langcode: es
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_sex
+field_name: field_sex
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: male
+      label: Male
+    -
+      value: female
+      label: Female
+    -
+      value: others
+      label: Others
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,6 +1,6 @@
 <?php 
 
-namespace Drupal\custom_module\Controller;
+namespace Drupal\research_application_workflow\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 

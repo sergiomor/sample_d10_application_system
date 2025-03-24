@@ -1,0 +1,19 @@
+uuid: 25e36bdb-24d6-40f8-b391-ae4e59a07bf1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_recommendations
+    - node.type.evaluation_form
+id: node.evaluation_form.field_recommendations
+field_name: field_recommendations
+entity_type: node
+bundle: evaluation_form
+label: Recommendations
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,17 @@
+services:
+
+  research_application_workflow.redirect_users:
+    class: Drupal\research_application_workflow\EventSubscriber\RedirectUsers
+    arguments: ['@current_route_match', '@current_user']
+    tags:
+    - { name: event_subscriber}
+
+  research_application_workflow.rankings_manager:
+    class: Drupal\research_application_workflow\Service\RankingsManager
+    arguments: ['@entity_type.manager']
+
+  research_application_workflow.taxonomy_print_configuration_subscriber:
+    class: Drupal\research_application_workflow\EventSubscriber\TaxonomyPrintConfigurationSubscriber
+    arguments: ['@research_application_workflow.rankings_manager']
+    tags:
+      - { name: event_subscriber }

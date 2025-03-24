@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\custom_module\Form;
+namespace Drupal\research_application_workflow\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -24,8 +24,8 @@ class DeleteData extends FormBase {
     public function buildForm(array $form, FormStateInterface
     $form_state) {
 
-        $end_date = \Drupal::config('custom_module.applicationsettings')->get('end_date');
-        $start_date = \Drupal::config('custom_module.applicationsettings')->get('start_date');
+        $end_date = \Drupal::config('research_application_workflow.applicationsettings')->get('end_date');
+        $start_date = \Drupal::config('research_application_workflow.applicationsettings')->get('start_date');
 
         //display submit only if the applications end date is past
         if( (strtotime($end_date) < strtotime('now')) || (strtotime($start_date) > strtotime('now')) ) {
@@ -264,7 +264,7 @@ class DeleteData extends FormBase {
             
         } catch (\Exception $e) {
             \Drupal::messenger()->addError($this->t('Error cleaning private directories: @message', ['@message' => $e->getMessage()]));
-            \Drupal::logger('custom_module')->error('Error cleaning private directories: @message', ['@message' => $e->getMessage()]);
+            \Drupal::logger('research_application_workflow')->error('Error cleaning private directories: @message', ['@message' => $e->getMessage()]);
         }
     }
     

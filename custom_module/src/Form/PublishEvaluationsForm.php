@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\custom_module\Form;
+namespace Drupal\research_application_workflow\Form;
 
 use Drupal\Core\Form\ConfirmFormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -263,10 +263,10 @@ class PublishEvaluationsForm extends ConfirmFormBase {
     
     // Prepare the email
     $mailManager = \Drupal::service('plugin.manager.mail');
-    $module = 'custom_module';
+    $module = 'research_application_workflow';
     $key = 'evaluation_published';
     $langcode = $user->getPreferredLangcode();
-    $from = 'servidor@araid.es';
+    $from = 'mail@example.com';
     
     // Get the candidate's name
     $name = $user->getAccountName();
@@ -334,6 +334,6 @@ ARAID'),
     
     $this->messenger()->addMessage($this->t('Evaluation results are now published and visible to candidates.'));
 
-    $form_state->setRedirect('custom_module.publish_evaluations');
+    $form_state->setRedirect('research_application_workflow.publish_evaluations');
   }
 }

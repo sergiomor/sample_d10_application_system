@@ -1,0 +1,19 @@
+uuid: 11f6833e-a30a-485d-bd66-b9e68b2b1b30
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_resources_provided
+field_name: field_resources_provided
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

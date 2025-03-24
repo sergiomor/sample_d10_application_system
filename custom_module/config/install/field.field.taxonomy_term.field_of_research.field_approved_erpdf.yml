@@ -1,0 +1,27 @@
+uuid: 81452238-e408-4042-a4b3-ae8918478585
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_approved_erpdf
+    - taxonomy.vocabulary.field_of_research
+  module:
+    - file
+id: taxonomy_term.field_of_research.field_approved_erpdf
+field_name: field_approved_erpdf
+entity_type: taxonomy_term
+bundle: field_of_research
+label: 'Approved Evaluators Ranking PDF'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: pdf
+  max_filesize: ''
+  description_field: false
+field_type: file

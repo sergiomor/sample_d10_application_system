@@ -1,0 +1,19 @@
+uuid: e26185e0-b5e0-48fc-813c-cc0604f5f1d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_resources_provided
+    - node.type.interest
+id: node.interest.field_resources_provided
+field_name: field_resources_provided
+entity_type: node
+bundle: interest
+label: 'Resources provided by the Research Institution for the recruited researcher'
+description: "<ul>\r\n<li>Material Resources (Rooms): Laboratories, offices, etc. Brief statement specifying the location of the researcher and where appropriate, the need to share the space with others researchers. </li>\r\n<li>Extra Material Resources</li>\r\n<li>Human Resources</li>\r\n<li>Economic Resources</li>\r\n</ul>"
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

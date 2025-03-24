@@ -1,8 +1,8 @@
-# Custom Module Code Ontology
+# Research Application Workflow Code Ontology
 
 ## 1. Module Architecture
 ```
-custom_module/
+research_application_workflow/
 ├── config/
 │   ├── schema/          # Configuration schema definitions
 │   └── optional/        # Optional configuration
@@ -19,23 +19,23 @@ custom_module/
 
 ### Routes & Controllers
 - **Applications Management**
-  - `custom_module.form` → `ExpressionsInterest` (Form)
-  - `custom_module.expressions_interest` → `ActiveExpressionsInterest::dashboardIr`
-  - `custom_module.upload_expression_interest.form` → `UploadExpressionInterest` (Form)
-  - `custom_module.submit_application.form` → `SubmitApplication` (Form)
+  - `research_application_workflow.form` → `ExpressionsInterest` (Form)
+  - `research_application_workflow.expressions_interest` → `ActiveExpressionsInterest::dashboardIr`
+  - `research_application_workflow.upload_expression_interest.form` → `UploadExpressionInterest` (Form)
+  - `research_application_workflow.submit_application.form` → `SubmitApplication` (Form)
 
 - **Admin Functions**
-  - `custom_module.application_settings.form` → `ApplicationSettings` (Form)
-  - `custom_module.download_csv` → `DownloadCandidatesCsv::downloadCsv`
+  - `research_application_workflow.application_settings.form` → `ApplicationSettings` (Form)
+  - `research_application_workflow.download_csv` → `DownloadCandidatesCsv::downloadCsv`
 
 - **Rankings System**
-  - `custom_module.ranking_per_field` → `RankingPerField`
-  - `custom_module.rankings_admin` → `RankingsEvaluatorsAdmin`
+  - `research_application_workflow.ranking_per_field` → `RankingPerField`
+  - `research_application_workflow.rankings_admin` → `RankingsEvaluatorsAdmin`
 
 ### Services
-- `custom_module.redirect_users` → Handles user redirects based on roles
-- `custom_module.rankings_manager` → Manages application rankings
-- `custom_module.taxonomy_print_configuration_subscriber` → Event subscriber for taxonomy printing
+- `research_application_workflow.redirect_users` → Handles user redirects based on roles
+- `research_application_workflow.rankings_manager` → Manages application rankings
+- `research_application_workflow.taxonomy_print_configuration_subscriber` → Event subscriber for taxonomy printing
 
 ### Primary User Interfaces
 1. **Candidate Portal** - For applicants to submit expressions of interest
@@ -46,7 +46,7 @@ custom_module/
 ## 3. Data Management
 
 ### Configuration Entities
-- `custom_module.applicationsettings` - Stores application settings like dates and email
+- `research_application_workflow.applicationsettings` - Stores application settings like dates and email
 
 ### Business Logic
 - Application submission workflow

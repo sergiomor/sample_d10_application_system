@@ -1,0 +1,21 @@
+uuid: 3d7d0ee9-40b6-473a-9a7c-8e7a52301f4c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_conflict_2
+    - node.type.evaluation_form
+id: node.evaluation_form.field_conflict_2
+field_name: field_conflict_2
+entity_type: node
+bundle: evaluation_form
+label: 'I declare to have no disqualifying or potential conflict of interest with this proposal that I hereby evaluate '
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

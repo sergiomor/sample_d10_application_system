@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\custom_module\Form;
+namespace Drupal\research_application_workflow\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -315,7 +315,7 @@ class RankingActionForm extends FormBase {
       return TRUE;
     }
     catch (\Exception $e) {
-      \Drupal::logger('custom_module')->error('Error in RankingCalculations: @message', ['@message' => $e->getMessage]);
+      \Drupal::logger('research_application_workflow')->error('Error in RankingCalculations: @message', ['@message' => $e->getMessage]);
       return FALSE;
     }
 }

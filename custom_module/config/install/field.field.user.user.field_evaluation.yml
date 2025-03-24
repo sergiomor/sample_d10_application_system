@@ -1,0 +1,24 @@
+uuid: f84edc8b-e671-42c5-8c14-1d8d6de6777b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_evaluation
+  module:
+    - user
+id: user.user.field_evaluation
+field_name: field_evaluation
+entity_type: user
+bundle: user
+label: 'Evaluation Fids (for candidates)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

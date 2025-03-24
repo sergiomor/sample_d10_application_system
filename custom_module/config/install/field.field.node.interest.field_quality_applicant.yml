@@ -1,0 +1,19 @@
+uuid: e27b7d0c-0a66-45b5-bcca-3f8e14f592a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_quality_applicant
+    - node.type.interest
+id: node.interest.field_quality_applicant
+field_name: field_quality_applicant
+entity_type: node
+bundle: interest
+label: "Quality of the applicant's CV and its complementaries/sinergies within the Centre/Group"
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

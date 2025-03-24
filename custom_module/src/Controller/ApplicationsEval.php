@@ -1,11 +1,10 @@
 <?php 
 
-namespace Drupal\custom_module\Controller;
+namespace Drupal\research_application_workflow\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\node\Entity\Node;
 use Drupal\Core\Url;
-use Drupal\file\Entity\File;
 
 //creates dashboard for Evaluators
  class ApplicationsEval extends ControllerBase {
@@ -390,7 +389,7 @@ use Drupal\file\Entity\File;
                                         }
                                     }
                                     
-                                    $approval_url = Url::fromRoute('custom_module.upload_ranking_approval.form', ['tid' => $tid])->toString();                                    
+                                    $approval_url = Url::fromRoute('research_application_workflow.upload_ranking_approval.form', ['tid' => $tid])->toString();                                    
                                     $rankings_table .= '<tr>';
                                     $rankings_table .= '<td>' . $term_name . '</td>';
                                     $rankings_table .= '<td><a href="' . $pdf_url . '" target="_blank">' . t('View Ranking') . '</a></td>';

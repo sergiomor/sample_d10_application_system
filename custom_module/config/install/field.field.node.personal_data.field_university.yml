@@ -1,0 +1,19 @@
+uuid: 58e943bc-1419-4463-a590-a5dbd7b11608
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_university
+    - node.type.personal_data
+id: node.personal_data.field_university
+field_name: field_university
+entity_type: node
+bundle: personal_data
+label: University
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

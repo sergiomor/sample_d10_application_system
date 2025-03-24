@@ -1,0 +1,19 @@
+uuid: 84370252-631e-4cb9-9fc3-fa6db12f9c1f
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_evaluators
+field_name: field_evaluators
+entity_type: user
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: 3
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,18 @@
+uuid: f32b108b-0c80-48f3-a20f-90fd172b5b8a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_access_to_interview
+field_name: field_access_to_interview
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,16 @@
+uuid: 67bdb270-95db-49e6-a02b-64b9e7167f09
+langcode: en
+status: true
+dependencies:
+  module:
+    - node_view_permissions
+id: interventor
+label: Interventor
+weight: -8
+is_admin: null
+permissions:
+  - 'view any letters content'
+  - 'view any more_information content'
+  - 'view any personal_data content'
+  - 'view any research_data content'
+  - 'view any research_line content'

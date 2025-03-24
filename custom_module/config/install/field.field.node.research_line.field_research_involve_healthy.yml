@@ -1,0 +1,23 @@
+uuid: b3b64cc7-fc24-406f-81bc-ad73da0d695f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_research_involve_healthy
+    - node.type.research_line
+id: node.research_line.field_research_involve_healthy
+field_name: field_research_involve_healthy
+entity_type: node
+bundle: research_line
+label: 'Does the proposed research involve adult healthy volunteers?'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

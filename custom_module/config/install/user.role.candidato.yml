@@ -1,0 +1,45 @@
+uuid: b710f0c0-3d99-4c60-a512-e69d5e8e7da9
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.letters
+    - node.type.more_information
+    - node.type.personal_data
+    - node.type.research_data
+    - node.type.research_line
+  module:
+    - entity_print
+    - entity_print_views
+    - node
+    - node_view_permissions
+id: candidato
+label: Candidate
+weight: -3
+is_admin: null
+permissions:
+  - 'bypass entity print access'
+  - 'create letters content'
+  - 'create more_information content'
+  - 'create personal_data content'
+  - 'create research_data content'
+  - 'create research_line content'
+  - 'edit own letters content'
+  - 'edit own more_information content'
+  - 'edit own personal_data content'
+  - 'edit own research_data content'
+  - 'edit own research_line content'
+  - 'entity print access bundle letters'
+  - 'entity print access bundle more_information'
+  - 'entity print access bundle personal_data'
+  - 'entity print access bundle research_data'
+  - 'entity print access bundle research_line'
+  - 'entity print views access'
+  - 'view any call_for_applications content'
+  - 'view any interest content'
+  - 'view any page content'
+  - 'view own letters content'
+  - 'view own more_information content'
+  - 'view own personal_data content'
+  - 'view own research_data content'
+  - 'view own research_line content'

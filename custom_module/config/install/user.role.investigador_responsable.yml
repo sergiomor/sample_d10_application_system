@@ -1,0 +1,32 @@
+uuid: 2fc7dcca-578f-4bb5-bcd2-c11d8de9b589
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.interest
+  module:
+    - devel
+    - entity_print
+    - entity_print_views
+    - node
+    - node_view_permissions
+    - pfdp
+id: investigador_responsable
+label: 'Researcher Manager'
+weight: -7
+is_admin: null
+permissions:
+  - 'access devel information'
+  - 'bypass pfdp'
+  - 'create interest content'
+  - 'edit own interest content'
+  - 'entity print access bundle interest'
+  - 'entity print views access'
+  - 'view any call_for_applications content'
+  - 'view any letters content'
+  - 'view any more_information content'
+  - 'view any page content'
+  - 'view any personal_data content'
+  - 'view any research_data content'
+  - 'view any research_line content'
+  - 'view own interest content'

@@ -1,0 +1,19 @@
+uuid: 2f78ddb8-bb56-424e-b959-a4a0cfde741f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_other_degrees
+    - node.type.personal_data
+id: node.personal_data.field_other_degrees
+field_name: field_other_degrees
+entity_type: node
+bundle: personal_data
+label: 'Other degrees (MsC, MBA, etc.)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,19 @@
+uuid: cc4f4d12-d7b1-4357-9018-88b41b8f4f57
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_other_conditions
+    - node.type.more_information
+id: node.more_information.field_other_conditions
+field_name: field_other_conditions
+entity_type: node
+bundle: more_information
+label: 'Other conditions/limitations that may be relevant'
+description: 'Any other conditions/limitations that may be relevant to the negotiation process'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

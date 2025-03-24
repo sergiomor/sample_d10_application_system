@@ -1,0 +1,23 @@
+uuid: c70d050c-c463-482f-b660-c92c0030bcf0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_animals_non_human
+    - node.type.research_line
+id: node.research_line.field_animals_non_human
+field_name: field_animals_non_human
+entity_type: node
+bundle: research_line
+label: 'Are those animals non-human primates?'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

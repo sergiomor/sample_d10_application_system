@@ -1,0 +1,23 @@
+uuid: a1048016-55c9-48c0-973f-868a2da065d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_does_the_proposed_research
+    - node.type.research_line
+id: node.research_line.field_does_the_proposed_research
+field_name: field_does_the_proposed_research
+entity_type: node
+bundle: research_line
+label: 'Does the proposed research involve human Foetal Tissues/Cells?'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

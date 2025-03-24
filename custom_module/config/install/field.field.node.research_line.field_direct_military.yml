@@ -1,0 +1,23 @@
+uuid: 11ab6d93-7f06-406b-9906-b4abd5df80a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_direct_military
+    - node.type.research_line
+id: node.research_line.field_direct_military
+field_name: field_direct_military
+entity_type: node
+bundle: research_line
+label: 'Research having direct military use'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

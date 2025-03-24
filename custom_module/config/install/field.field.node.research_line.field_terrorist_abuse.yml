@@ -1,0 +1,23 @@
+uuid: c2a1e08b-1f3a-47c2-a1ca-3cc2b122f5fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_terrorist_abuse
+    - node.type.research_line
+id: node.research_line.field_terrorist_abuse
+field_name: field_terrorist_abuse
+entity_type: node
+bundle: research_line
+label: 'Research having the potential for terrorist abuse'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

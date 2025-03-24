@@ -1,0 +1,31 @@
+uuid: c16a7711-698c-442b-a533-d8a2504d5b3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_eval_1
+    - node.type.evaluation_form
+    - paragraphs.paragraphs_type.evaluation_1
+  module:
+    - entity_reference_revisions
+id: node.evaluation_form.field_eval_1
+field_name: field_eval_1
+entity_type: node
+bundle: evaluation_form
+label: 'Research experience and positive consequences of mobility in the scientific career'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      evaluation_1: evaluation_1
+    negate: 0
+    target_bundles_drag_drop:
+      evaluation_1:
+        weight: 2
+        enabled: true
+field_type: entity_reference_revisions

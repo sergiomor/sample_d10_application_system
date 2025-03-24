@@ -1,0 +1,10 @@
+uuid: c05c910f-6252-4fba-93e0-5df2f074938f
+langcode: en
+status: true
+dependencies: {  }
+id: evaluation_1
+label: 'Evaluation Item'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,19 @@
+uuid: 3367415c-47f2-4a15-b62e-cb1d84657723
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_choose
+    - node.type.interest
+id: node.interest.field_choose
+field_name: field_choose
+entity_type: node
+bundle: interest
+label: 'Field that best matches his/her field of research'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,19 @@
+uuid: 99e957a9-3112-447a-8f12-aeb77811f286
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_need_recruitment
+    - node.type.interest
+id: node.interest.field_need_recruitment
+field_name: field_need_recruitment
+entity_type: node
+bundle: interest
+label: 'Need for the recruitment and the Scientific, economical and social impact'
+description: 'Brief statement describing the need for the recruitment and the scientific, economical and social impact.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

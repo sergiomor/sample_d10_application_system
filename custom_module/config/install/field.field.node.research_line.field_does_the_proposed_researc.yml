@@ -1,0 +1,23 @@
+uuid: 25e86f7d-944c-4467-95ec-0d7fe1bdd595
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_does_the_proposed_researc
+    - node.type.research_line
+id: node.research_line.field_does_the_proposed_researc
+field_name: field_does_the_proposed_researc
+entity_type: node
+bundle: research_line
+label: ' Does the proposed research involve human Embryos?'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
