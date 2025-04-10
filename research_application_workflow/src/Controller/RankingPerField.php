@@ -37,8 +37,10 @@ class RankingPerField extends ControllerBase {
    *   The config factory service.
    * @param \Drupal\research_application_workflow\Service\RankingsManager $rankings_manager
    */
-  public function __construct(ConfigFactoryInterface $config_factory,
-    RankingsManager $rankings_manager) {
+  public function __construct(
+    ConfigFactoryInterface $config_factory,
+    RankingsManager $rankings_manager,
+  ) {
     $this->configFactory = $config_factory;
     $this->rankingsManager = $rankings_manager;
   }
@@ -64,7 +66,7 @@ class RankingPerField extends ControllerBase {
     if (!empty($end_date)) {
       $end_date = new DrupalDateTime($end_date);
       $now = new DrupalDateTime('now');
-      
+
       if ($end_date > $now) {
         return [
           '#markup' => $this->t('Currently there is a Call for Applications process. Rankings can only be displayed after the current Call ends.'),
@@ -72,7 +74,7 @@ class RankingPerField extends ControllerBase {
       }
     }
 
-    // Load all taxonomy terms from field_of_research vocabulary
+    // Load all taxonomy terms from field_of_research vocabulary.
     $vid = 'field_of_research';
     $terms = \Drupal::entityTypeManager()
       ->getStorage('taxonomy_term')
@@ -104,36 +106,36 @@ class RankingPerField extends ControllerBase {
 
     $rankings = $this->rankingsManager->getRankingsData($tid);
 
-    // Check there are canditates for this Field of Research
+    // Check there are canditates for this Field of Research.
     $research_data_nids = \Drupal::entityQuery('node')
       ->accessCheck(TRUE)
       ->condition('type', 'research_data')
       ->condition('field_choose_field', $tid)
       ->execute();
-  
+
     if (!empty($research_data_nids)) {
-        // Add action form
-        $rankings['action_form'] = [
-          '#type' => 'container',
-          '#attributes' => ['class' => ['form-actions']],
-          'form' => \Drupal::formBuilder()->getForm('Drupal\research_application_workflow\Form\RankingActionForm', $tid),
-        ];
+      // Add action form.
+      $rankings['action_form'] = [
+        '#type' => 'container',
+        '#attributes' => ['class' => ['form-actions']],
+        'form' => \Drupal::formBuilder()->getForm('Drupal\research_application_workflow\Form\RankingActionForm', $tid),
+      ];
     }
 
-    // Load the taxonomy term to get its name
+    // Load the taxonomy term to get its name.
     $term = Term::load($tid);
-    // check if ranking was generated
+    // Check if ranking was generated.
     $fid = $term->get('field_ranking_pdf')->target_id;
-    if ($fid) { 
-      // add Aprove Ranking
+    if ($fid) {
+      // Add Aprove Ranking.
       $rankings['approve_form'] = [
         '#type' => 'container',
         '#attributes' => ['class' => ['form-actions']],
         'form' => \Drupal::formBuilder()->getForm('Drupal\research_application_workflow\Form\ApproveActionForm', $tid),
       ];
     }
-    
-    // Add back button
+
+    // Add back button.
     $rankings['back_button'] = [
       '#type' => 'link',
       '#title' => $this->t('Back to Fields of Research'),
@@ -144,5 +146,6 @@ class RankingPerField extends ControllerBase {
     ];
 
     return $rankings;
-  } 
+  }
+
 }

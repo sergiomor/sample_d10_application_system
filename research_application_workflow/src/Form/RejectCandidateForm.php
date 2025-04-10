@@ -33,32 +33,33 @@ class RejectCandidateForm extends ConfirmFormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state, $uid = NULL) {
     $this->candidateId = $uid;
-    
-    // Load the candidate user
+
+    // Load the candidate user.
     $candidate = User::load($this->candidateId);
     if (!$candidate) {
       $this->messenger()->addError($this->t('Candidate not found.'));
       return new RedirectResponse(Url::fromRoute('research_application_workflow.expressions_interest')->toString());
     }
-    
-    // Get candidate's personal data
+
+    // Get candidate's personal data.
     $query = \Drupal::entityQuery('node')
       ->accessCheck(TRUE)
       ->condition('uid', $this->candidateId)
       ->condition('type', 'personal_data');
     $pd_nid = $query->execute();
-    
+
     if (count($pd_nid) > 0) {
       $nodePD = Node::load(reset($pd_nid));
       $candidate_name = $nodePD->label() . ', ' . $nodePD->get('field_first_name')->value;
-    } else {
+    }
+    else {
       $candidate_name = $candidate->getAccountName();
     }
-    
+
     $form['candidate_name'] = [
       '#markup' => '<p>' . $this->t('Candidate: @name', ['@name' => $candidate_name]) . '</p>',
     ];
-    
+
     return parent::buildForm($form, $form_state);
   }
 
@@ -94,50 +95,50 @@ class RejectCandidateForm extends ConfirmFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    // Load the candidate user
+    // Load the candidate user.
     $candidate = User::load($this->candidateId);
     if (!$candidate) {
       $this->messenger()->addError($this->t('Candidate not found.'));
       $form_state->setRedirect('research_application_workflow.expressions_interest');
       return;
     }
-    
-    // Load the current researcher user
+
+    // Load the current researcher user.
     $researcher = \Drupal::currentUser();
     $researcher_id = $researcher->id();
     $researcher_user = User::load($researcher_id);
-    
+
     // 1. Remove candidate from researcher's field_candidate
     if ($researcher_user && $researcher_user->hasField('field_candidate')) {
       $candidates = $researcher_user->get('field_candidate')->getValue();
       $updated_candidates = [];
-      
+
       foreach ($candidates as $candidate_item) {
         if ($candidate_item['target_id'] != $this->candidateId) {
           $updated_candidates[] = $candidate_item;
         }
       }
-      
+
       $researcher_user->set('field_candidate', $updated_candidates);
       $researcher_user->save();
     }
-    
+
     // 2. Remove researcher from candidate's field_researcher
     if ($candidate && $candidate->hasField('field_researcher')) {
       $candidate->set('field_researcher', NULL);
       $candidate->save();
     }
-    
+
     // 3. Send notification email to candidate
     $this->notifyCandidate($candidate, $researcher_user);
-    
-    // Set success message
+
+    // Set success message.
     $this->messenger()->addStatus($this->t('The candidate has been rejected and removed from your list.'));
-    
-    // Redirect back to expressions of interest page
+
+    // Redirect back to expressions of interest page.
     $form_state->setRedirect('research_application_workflow.expressions_interest');
   }
-  
+
   /**
    * Notify the candidate that they have been rejected.
    *
@@ -147,23 +148,23 @@ class RejectCandidateForm extends ConfirmFormBase {
    *   The researcher who rejected the candidate.
    */
   protected function notifyCandidate($user, $researcher) {
-    // Get the candidate's email
+    // Get the candidate's email.
     $to = $user->getEmail();
     if (!$to) {
       return;
     }
-    
-    // Prepare the email
+
+    // Prepare the email.
     $mailManager = \Drupal::service('plugin.manager.mail');
     $module = 'research_application_workflow';
     $key = 'candidate_rejection';
     $langcode = $user->getPreferredLangcode();
     $from = 'mail@example.com';
-    
-    // Get the candidate's name and researcher's name
+
+    // Get the candidate's name and researcher's name.
     $name = $user->getAccountName();
-    
-    // Prepare the params
+
+    // Prepare the params.
     $params = [
       'user' => $user,
       'subject' => $this->t('Your Expression of Interest has been rejected'),
@@ -174,10 +175,10 @@ the Research Manager/Host Institution of your choice has declined the invitation
 Best Regards,
 ARAID'),
     ];
-    
-    // Send the email
+
+    // Send the email.
     $result = $mailManager->mail($module, $key, $to, $langcode, $params, $from, TRUE);
-    
+
     if (!$result['result']) {
       $this->messenger()->addWarning($this->t('There was a problem sending the rejection email to @name.', [
         '@name' => $name,

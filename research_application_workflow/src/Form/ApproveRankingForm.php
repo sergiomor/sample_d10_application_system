@@ -146,38 +146,41 @@ class ApproveRankingForm extends ConfirmFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     if ($this->evaluator && $this->term && $this->rankingFile) {
-      // Get the uploaded file
+      
+      // Get the uploaded file.
       $file_id = $form_state->getValue('approval_file', 0);
       if (!$file_id || !isset($file_id[0])) {
         $this->messenger()->addError($this->t('No file was uploaded.'));
         return;
       }
       
-      // Load the uploaded file
+      // Load the uploaded file.
       $file = File::load($file_id[0]);
       if (!$file) {
         $this->messenger()->addError($this->t('Could not load the uploaded file.'));
         return;
       }
       
-      // Get original file details
+      // Get original file details.
       $original_filename = $this->rankingFile->getFilename();
       
       // Get the file system service
       $file_system = \Drupal::service('file_system');
       
-      // Get the current URI and create the new URI with the original filename
+      // Get the current URI and create the new URI 
+      // with the original filename.
       $current_uri = $file->getFileUri();
       $file_extension = pathinfo($current_uri, PATHINFO_EXTENSION);
       $directory = dirname($current_uri);
       $new_uri = $directory . '/' . pathinfo($original_filename, PATHINFO_FILENAME) . '.' . $file_extension;
       
-      // Move the file to the new URI
+      // Move the file to the new URI.
       try {
-        // Get the real paths
+
+        // Get the real paths.
         $current_path = $file_system->realpath($current_uri);
         
-        // Create the new URI
+        // Create the new URI.
         if ($file_system->prepareDirectory($directory, \Drupal\Core\File\FileSystemInterface::CREATE_DIRECTORY)) {
           // Copy the file to the new location (we use copy then delete to avoid issues with file being in use)
           if (copy($current_path, $file_system->realpath($new_uri))) {
@@ -185,7 +188,7 @@ class ApproveRankingForm extends ConfirmFormBase {
             $file->setFileUri($new_uri);
             $file->setFilename($original_filename);
             
-            // Set the file as permanent and update owner to match the original file
+            // Set the file as permanent and update owner to match the original file.
             $file->setPermanent();
             $file->setOwner($this->evaluator);
             $file->save();
@@ -193,12 +196,12 @@ class ApproveRankingForm extends ConfirmFormBase {
             // Delete the original file
             unlink($current_path);
             
-            // Save the file reference in the term's field_approved_erpdf field
+            // Save the file reference in the term's field_approved_erpdf field.
             if ($this->term->hasField('field_approved_erpdf')) {
               $this->term->get('field_approved_erpdf')->appendItem($file->id());
               $this->term->save();
               
-              // Send notification to the evaluator
+              // Send notification to the evaluator.
               $this->notifyEvaluator();
               
               $this->messenger()->addStatus($this->t('The ranking has been approved.'));
@@ -233,7 +236,8 @@ class ApproveRankingForm extends ConfirmFormBase {
    *   The file entity if found, null otherwise.
    */
   protected function findRankingFile() {
-    // Check if the term has field_evaluators_ranking_pdf
+
+    // Check if the term has field_evaluators_ranking_pdf.
     if (!$this->term->hasField('field_evaluators_ranking_pdf')) {
       return NULL;
     }
@@ -241,9 +245,10 @@ class ApproveRankingForm extends ConfirmFormBase {
     // Get all file references from the field
     $file_references = $this->term->get('field_evaluators_ranking_pdf')->referencedEntities();
     
-    // Check each file to see if it's owned by the specified user
+    // Check each file to see if it's owned by the specified user.
     foreach ($file_references as $file) {
-      // Load the full file entity
+
+      // Load the full file entity.
       $loaded_file = File::load($file->id());
       if ($loaded_file && $loaded_file->getOwnerId() == $this->uid) {
         return $loaded_file;
@@ -256,20 +261,21 @@ class ApproveRankingForm extends ConfirmFormBase {
    * Sends a notification to the evaluator about the approval.
    */
   protected function notifyEvaluator() {
-    // Get the evaluator's email
+
+    // Get the evaluator's email.
     $to = $this->evaluator->getEmail();
     if (!$to) {
       return;
     }
     
-    // Prepare the email
+    // Prepare the email.
     $mailManager = \Drupal::service('plugin.manager.mail');
     $module = 'research_application_workflow';
     $key = 'ranking_approved';
     $langcode = $this->evaluator->getPreferredLangcode();
-    $from = 'servidor@araid.es';
+    $from = 'example@email.com';
     
-    // Prepare the params
+    // Prepare the params.
     $params = [
       'evaluator' => $this->evaluator,
       'term' => $this->term,
@@ -279,23 +285,19 @@ class ApproveRankingForm extends ConfirmFormBase {
       ]),
       'message' => $this->t('Dear @name,
 
-Your ranking for the Field of Research "@research_line" has been approved.
-Thank you for your contribution.
+          Your ranking for the Field of Research "@research_line" has been approved.
+          Thank you for your contribution.
 
-Regards,
-The Administration Team', [
+          Regards,
+          The Administration Team', [
         '@name' => $this->evaluator->getAccountName(),
         '@research_line' => $this->term->getName(),
       ]),
     ];
     
-    // Send the email
+    // Send the email.
     $send_now = TRUE;
     return $mailManager->mail($module, $key, $to, $langcode, $params, 
         $from, $send_now);
-    
-    if (!$result['result']) {
-      $this->messenger()->addWarning($this->t('There was a problem sending the notification email to the evaluator.'));
-    }
   }
-}
+ } 

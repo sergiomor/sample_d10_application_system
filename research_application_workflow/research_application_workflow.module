@@ -21,7 +21,7 @@ function research_application_workflow_entity_presave(
 
     if (($entity->getEntityType()->id() == 'node')) {
 
-        //candidato does not need to add a title
+        // Candidato does not need to add a title.
         $bundles_label = [
             'research_data',
             'research_line',
@@ -31,7 +31,7 @@ function research_application_workflow_entity_presave(
         if (in_array($entity->bundle(), $bundles_label)) {
                 $entity->title->value = $entity->type->entity->label();
         }
-        //calculate marks in the evaluate form node
+        // Calculate marks in the evaluate form node.
         if ($entity->bundle() == 'evaluation_form') {
             $eval_1 = getMark($entity, $paragraph = 'field_eval_1');
             $eval_2 = getMark($entity, $paragraph = 'field_eval_2');
@@ -51,12 +51,12 @@ function research_application_workflow_entity_presave(
         }
     }
 
-    // Check if this is a node entity and a letters node
+    // Check if this is a node entity and a letters node.
     if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'letters') {
         // Get the uid from the query parameter
         $uid = \Drupal::request()->query->get('uid');
         if ($uid) {
-            // Set the owner to the user with the specified uid
+            // Set the owner to the user with the specified uid.
             $entity->setOwnerId($uid);
         }
     }
@@ -66,7 +66,7 @@ function research_application_workflow_entity_presave(
  * {@inheritdoc}
  * @return integer
  */
-//get marks from the evaluator form node
+// Get marks from the evaluator form node.
 function getMark($entity, $paragraph) {
 
     $pid = $entity->get($paragraph)->target_id;
@@ -77,14 +77,15 @@ function getMark($entity, $paragraph) {
 /**
  * Implements hook_user_login().
  */
-//redirect users to their dashboads after login
+// Redirect users to their dashboads after login.
 function research_application_workflow_user_login($account) { 
 
     $user = \Drupal::currentUser();
     $roles = $user->getRoles();
     if ((in_array('candidato', $roles)) || 
     in_array('candidato_enviado', $roles)) {
-        //ignore password reset
+
+        // Ignore password reset.
         $route_name = \Drupal::routeMatch()->getRouteName();
         if ($route_name !== 'user.reset.login') {
             $current_request = \Drupal::service('request_stack')
@@ -95,15 +96,17 @@ function research_application_workflow_user_login($account) {
                 ->condition('type', 'personal_data');
             $pd_nid=$query->execute();
             if (count($pd_nid) > 0) {
-                //redirect Candidato to Personal Data node
+
+                // Redirect Candidato to Personal Data node.
                 $current_request->query->set(
                     'destination',
                     \Drupal\Core\Url::fromRoute('entity.node.canonical', 
                     ['node' => reset($pd_nid)])->toString()
                     );
             } else {
-                //redirect Candidato to Personal Data node 
-                //add form if not completed
+
+                // Redirect Candidato to Personal Data node .
+                // Add form if not completed.
                 $current_request->query->set(
                     'destination',
                     \Drupal\Core\Url::fromRoute('node.add', 
@@ -112,9 +115,11 @@ function research_application_workflow_user_login($account) {
             }
         }
     }
-    //redirect IR to dashboard
+
+    // Redirect IR to dashboard.
     if (in_array('investigador_responsable', $roles)) {
-        //ignore password reset
+
+        // Ignore password reset.
         $route_name = \Drupal::routeMatch()->getRouteName();
         if ($route_name !== 'user.reset.login') {
             $current_request = \Drupal::service('request_stack')
@@ -126,9 +131,11 @@ function research_application_workflow_user_login($account) {
                 );
         }
     }
-   //redirect evaluator
+
+   // Redirect evaluator.
    if (in_array('evaluador', $roles)) {
-        //ignore password reset
+
+        // Ignore password reset.
         $route_name = \Drupal::routeMatch()->getRouteName();
         if ($route_name !== 'user.reset.login') {
             $current_request = \Drupal::service('request_stack')
@@ -140,10 +147,11 @@ function research_application_workflow_user_login($account) {
                 );
         }
     }
-  //redirect admin
+
+  // Redirect admin.
    if (in_array('administrator', $roles)) {
 
-    //ignore password reset
+    // Ignore password reset.
     $route_name = \Drupal::routeMatch()->getRouteName();
         if ($route_name !== 'user.reset.login') {
             $current_request = \Drupal::service('request_stack')
@@ -168,26 +176,27 @@ function research_application_workflow_user_login($account) {
         && ($route_name !== 'user.reset.login'
         )) {
         
-        //redirect candidato users to dashboard
-        //after editing the account
+        // Redirect candidato users to dashboard.
+        // After editing the account.
         $user_creator = \Drupal::currentUser();
         $roles_creator = $user_creator->getRoles();
          if (in_array('candidato', $roles_creator)) {
           $form['actions']['submit']['#submit'][] = 
           'redirect_to_dashboard_form_handler';
          }
-         //show Field of Research only to evaluators and admins 
+         // Show Field of Research only to evaluators and admins.
         $roles_access = ['evaluador', 'administrator'];
         if (count(array_intersect($roles_access, $roles_creator)) == 0) {
             unset($form['field_research_lines']);
          }  
-        //show field Evaluator and EI only to admins
+
+        // Show field Evaluator and EI only to admins.
         if (!in_array('administrator', $roles_creator)) {
             unset($form['field_evaluators']);
             unset($form['field_signed_ei_fid']);
         }
-        //when editing evaluators from the Manage Evaluators UI
-        //remove unnecesary form items
+
+        // When editing evaluators from the Manage Evaluators UI.
         if (in_array('administrator', $roles_creator)) {
             $eval = \Drupal::request()->query->get('form');
             if ($eval && $eval == 'evaluators') {
@@ -204,29 +213,34 @@ function research_application_workflow_user_login($account) {
     if ($form_id == 'user_register_form') {
         $user_creator = \Drupal::currentUser();
         $roles_creator = $user_creator->getRoles();
-        //show Field of Research only to evaluators and admins 
+
+        // Show Field of Research only to evaluators and admins .
         $roles_access = ['evaluador', 'administrator'];
         if (count(array_intersect($roles_access, $roles_creator)) == 0) {
             unset($form['field_research_lines']);
         }  
-        //show field Evaluator only to admins
+        // Show field Evaluator only to admins.
         if (!in_array('administrator', $roles_creator)) {
             unset($form['field_evaluators']);
         }
     }
-    //prepolulate interest node add 
+
+    // Prepolulate interest node add.
     if (($form_id == 'node_interest_form') || 
         ($form_id == 'node_interest_edit_form')) {
-        //hide field_candidate
+
+        // Hide field_candidate
         $user_creator = \Drupal::currentUser();
         $roles_creator = $user_creator->getRoles();
         if (!in_array('administrator', $roles_creator)) {
             $form['field_candidate']['widget'][0]['value']
             ['#type'] = 'hidden';
-            //hide access to interview
+
+            // Hide access to interview.
             $form['field_access_to_interview']['#access'] = FALSE;
            } 
-        //get candidate uid from url query string
+
+        // Get candidate uid from url query string.
         $c_uid = \Drupal::request()->query->get('key');
         if ((!$c_uid) && isset($form['field_candidate']['widget'][0]['value']
         ['#default_value'])) {
@@ -241,14 +255,16 @@ function research_application_workflow_user_login($account) {
         $rd_nid=$query->execute();
         if (count($rd_nid) > 0) {
             $rd = Node::load(reset($rd_nid));
-            //prepopulate institution
+
+            // Prepopulate institution.
             $rd_i = $rd->field_institution_support->getValue();
             $rd_i = reset($rd_i[0]);
             $term_i = \Drupal::entityTypeManager()
                 ->getStorage('taxonomy_term')->load($rd_i);
             $form['title']['widget'][0]['value']['#default_value']
                 = $term_i->name->value;
-            //prepopulate Choose the field
+
+            // Prepopulate Choose the field.
             $rd_cf = $rd->field_choose_field->getValue();
             $rd_cf = reset($rd_cf[0]);
             $term_cf = \Drupal::entityTypeManager()
@@ -256,24 +272,27 @@ function research_application_workflow_user_login($account) {
             $form['field_choose']['widget'][0]
                 ['value']['#default_value'] 
                 = $term_cf->name->value;
-            //field_candidate
+
+            // field_candidate
             $form['field_candidate']['widget'][0]['value']
                 ['#default_value'] = $c_uid;
-            //add submit handler to redirect to dashboard
+
+            // Add submit handler to redirect to dashboard.
             $form['actions']['submit']['#submit'][] = 
             'redirect_ir_to_dashboard_form_handler';
         }
     }
 
-    //prepolulate evaluation form node add 
+    // Prepolulate evaluation form node add .
     if (($form_id == 'node_evaluation_form_form') || 
         ($form_id == 'node_evaluation_form_edit_form'))  {
-        //hide field_candidate
+
+        // Hide field_candidate.
         $user_creator = \Drupal::currentUser();
         $roles_creator = $user_creator->getRoles();
         $form['field_candidate']['widget'][0]['value']
         ['#type'] = 'hidden';
-        //get candidate uid from url query string
+        // Get candidate uid from url query string.
         $c_uid = \Drupal::request()->query->get('eval');
         if ((!$c_uid) && isset($form['field_candidate']['widget'][0]['value']
         ['#default_value'])) {
@@ -281,7 +300,8 @@ function research_application_workflow_user_login($account) {
             ['#default_value'];
         }
         if($c_uid) {
-            //get candidate's personal data
+
+            // Get candidate's personal data.
             $query = \Drupal::entityQuery('node')
                 ->accessCheck(TRUE)
                 ->condition('uid', $c_uid)
@@ -290,27 +310,31 @@ function research_application_workflow_user_login($account) {
             $nodePD = \Drupal::entityTypeManager()
                 ->getStorage('node')
                 ->load(reset($pd_nid));
-            //prepolulate title
+
+            // Prepolulate title.
                 $form['title']['widget'][0]['value']['#default_value']
                 = $nodePD->label() . ', ' . $nodePD->get('field_first_name')->value;
-            //prepopulate candidate
+
+            // Prepopulate candidate.
             $form['field_candidate']['widget'][0]['value']['#default_value']
                 = $c_uid;
 
             $user = \Drupal::currentUser();
             $roles = $user->getRoles();
             if (in_array('evaluador', $roles)) {
-                //add submit handler to redirect to dashboard
+
+                // Add submit handler to redirect to dashboard.
                 $form['actions']['submit']['#submit'][] = 
                 'redirect_ef_to_dashboard_form_handler';             
             } else {
-                //if consensus evaluation redirect to admin dashboard
+
+                // If consensus evaluation redirect to admin dashboard.
                 $form['actions']['submit']['#submit'][] = 
                 'redirect_ef_to_admin_dashboard_form_handler';     
             }
         }
     }
-    //add cancel button to Application Submission Form
+    // Add cancel button to Application Submission Form.
     if ($form_id == 'submit_form') {
         $user = \Drupal::currentUser();
         $roles = $user->getRoles();
@@ -331,11 +355,11 @@ function research_application_workflow_user_login($account) {
         }
     }
 
-    // Check if this is the letters node form
+    // Check if this is the letters node form.
     if (($form_id == 'node_letters_form')|| 
              ($form_id == 'node_letters_edit_form')) {
 
-        // If the user is not an administrator, hide the field_additional_letters field
+        // If the user is not an administrator, hide the field_additional_letters field.
         $current_user = \Drupal::currentUser();
         $current_roles = $current_user->getRoles();
         if (!in_array('administrator', $current_roles)) {
@@ -343,18 +367,22 @@ function research_application_workflow_user_login($account) {
                 $form['field_additional_letters']['#access'] = FALSE;
             }
         }
-        // Get the uid from the query parameter
+
+        // Get the uid from the query parameter.
         $uid = \Drupal::request()->query->get('uid');
         
         if ($uid) {
-        // Load the user
+
+        // Load the user.
         $user = \Drupal::entityTypeManager()->getStorage('user')->load($uid);
-            // Check if current user is admin
+
+            // Check if current user is admin.
             $current_user = \Drupal::currentUser();
             $roles = $current_user->getRoles();
             
             if (in_array('administrator', $roles)) {
-                // Add a custom submit handler to redirect after submission
+
+                // Add a custom submit handler to redirect after submission.
                 $form['actions']['submit']['#submit'][] = 'research_application_workflow_letters_form_submit';
             }
         }
@@ -365,7 +393,8 @@ function research_application_workflow_user_login($account) {
  * Custom submit handler for letters node form.
  */
 function research_application_workflow_letters_form_submit($form, FormStateInterface $form_state) {
-    // Redirect to the admin applications page
+
+    // Redirect to the admin applications page.
     $form_state->setRedirect('research_application_workflow.applications_admin');
 }
 
@@ -378,6 +407,7 @@ function redirect_to_dashboard_form_handler(&$form,
          $url = Url::fromUri('internal:' . $dest_url);
          $form_state->setRedirectUrl( $url );
 }
+
 /**
  * Submit handler for interest node add form.
  */
@@ -387,6 +417,7 @@ FormStateInterface $form_state) {
    $url = Url::fromUri('internal:' . $dest_url);
    $form_state->setRedirectUrl( $url );
 }
+
 /**
  * Submit handler for evaluator form node add form.
  */
@@ -396,6 +427,7 @@ FormStateInterface $form_state) {
    $url = Url::fromUri('internal:' . $dest_url);
    $form_state->setRedirectUrl( $url );
 }
+
 /**
  * Submit handler for admin evaluator form node add form.
  */
@@ -423,14 +455,16 @@ function research_application_workflow_cancel_submission(&$form,
         $form_state->setRedirectUrl( $url );
     }    
 }
+
  /**
  * Implements hook_user_presave().
  */
 function research_application_workflow_user_presave(UserInterface $user) {
     if ($user->isNew()) {
-        //if the new user is not created by admin 
-        //or is not a investigador_responsable
-        //assign the role candidato.
+
+        // If the new user is not created by admin.
+        // Or is not a investigador_responsable.
+        // Assign the role candidato.
         $user_creator = \Drupal::currentUser();
         $roles_creator = $user_creator->getRoles();
         $roles_new = $user->getRoles();
@@ -446,20 +480,22 @@ function research_application_workflow_user_presave(UserInterface $user) {
  */
 function research_application_workflow_user_insert(EntityInterface $user) {
     $roles = $user->getRoles();
-    //if the new user is of role evaluator
-    //assign him to a candidate with same Research Line
+
+    // If the new user is of role evaluator.
+    // Assign him to a candidate with same Research Line.
     if (in_array('evaluador', $roles)) {
         $lines = $user->field_research_lines->getValue();
         if ($lines) {
             foreach ($lines as $line) {
-                //get RD nodes with same Research Line
 
+                //Get RD nodes with same Research Line.
                 $queryRD = \Drupal::entityQuery('node')
                 ->accessCheck(FALSE)
                 ->condition('field_choose_field', $line['target_id'])
                 ->condition('type', 'research_data');
                 $rd_nids = $queryRD->execute();
-                //get candidate uid to which the RL node belongs
+                
+                // Get candidate uid to which the RL node belongs.
                 $candidates = array();
                 if (count($rd_nids) > 0 ) {
                     foreach ($rd_nids as $rd_nid) {
@@ -470,9 +506,9 @@ function research_application_workflow_user_insert(EntityInterface $user) {
                         if (!in_array($candidate, $candidates)) {
                             $candidates[] = $candidate;
                         }
-                        dpm($candidates);
-                        //assign evaluator to candidate's profile
-                        //randomize candidates
+
+                        // Assign evaluator to candidate's profile.
+                        // Randomize candidates.
                         shuffle($candidates);
                         foreach($candidates as $candidate) {
                             $c_user = \Drupal::entityTypeManager()
@@ -506,7 +542,8 @@ function research_application_workflow_mail($key, &$message, $params) {
       ];
       $from = 'mail@example.com';
       switch ($key) {
-        //Email template used to notify existing IRs.
+
+        // Email template used to notify existing IRs.
         case 'ir_existing':
           $message['subject'] = t('[ARAID] New expression of interest');
           $message['body'][] = t('
@@ -520,7 +557,8 @@ function research_application_workflow_mail($key, &$message, $params) {
             $options);
           $message['body'][] = Html::escape($params);
           break;
-          //Email template used to notify new IRs.
+
+          // Email template used to notify new IRs.
           case 'ir_non_existing':
             $from = $from;
             $message['subject'] = t('[ARAID] New expression of interest');
@@ -528,7 +566,8 @@ function research_application_workflow_mail($key, &$message, $params) {
               $options);
             $message['body'][] = $params;
             break;
-          //Email template used to notify candidates of completed EI's.
+
+          // Email template used to notify candidates of completed EI's.
           case 'c_EI_notify':
             $from = $from;
             $message['subject'] = t('[ARAID] Expression of interest completed');
@@ -542,7 +581,8 @@ function research_application_workflow_mail($key, &$message, $params) {
               $options);
             $message['body'][] = Html::escape($params);
             break;
-        //Email template used to notify admin of submitted applications.
+
+          // Email template used to notify admin of submitted applications.
           case 'admin_app_notify':
             $from = $from;
             $message['subject'] = t('[ARAID] New application submission');
@@ -550,7 +590,8 @@ function research_application_workflow_mail($key, &$message, $params) {
                 $options);
             $message['body'][] = $params;
             break;
-        //Email template used to notify candidate of sucessufull applications.
+
+          // Email template used to notify candidate of sucessufull applications.
           case 'candidate_app_notify':
             $from = $from;
             $message['subject'] = t('[ARAID] Application successful');
@@ -558,7 +599,8 @@ function research_application_workflow_mail($key, &$message, $params) {
                 $options);
             $message['body'][] = $params;
             break;
-        //Email template used to notify admin of submitted evaluations.
+
+          // Email template used to notify admin of submitted evaluations.
           case 'admin_eval_notify':
             $from = $from;
             $message['subject'] = t('[ARAID] New Evaluation submission');
@@ -566,7 +608,8 @@ function research_application_workflow_mail($key, &$message, $params) {
                 $options);
             $message['body'][] = $params;
             break;
-        //Email template used to notify admin of Ranking Approval.
+
+          // Email template used to notify admin of Ranking Approval.
           case 'admin_ranking_notify':
             $from = $from;
             $message['subject'] = t('[ARAID] New Ranking Approval submission');
@@ -574,8 +617,9 @@ function research_application_workflow_mail($key, &$message, $params) {
                 $options);
             $message['body'][] = $params;
             break;
-        //Email template used to notify Evaluators of 
-        // submitted consensus evaluations.
+
+          // Email template used to notify Evaluators of 
+          // submitted consensus evaluations.
           case 'evaluator_ranking_approval_notify':
             $from = $from;
             $message['subject'] = t('[ARAID] Ranking Approved');
@@ -583,8 +627,9 @@ function research_application_workflow_mail($key, &$message, $params) {
                 $options);
             $message['body'][] = $params;
             break;
-        //Email template used to notify admin of 
-        // submitted agreement consensus evaluations.
+
+          // Email template used to notify admin of 
+          // submitted agreement consensus evaluations.
           case 'admin_eval_notify_2':
             $from = $from;
             $message['subject'] = t('[ARAID] New Agreement Consensus Evaluation submission');
@@ -592,8 +637,9 @@ function research_application_workflow_mail($key, &$message, $params) {
                 $options);
             $message['body'][] = $params;
             break;
-        //Email template used to notify admin of the final
-        // submitted agreement consensus evaluations.
+
+          // Email template used to notify admin of the final
+          // submitted agreement consensus evaluations.
           case 'admin_eval_notify_3':
             $from = $from;
             $message['subject'] = t('[ARAID] Final Agreement Consensus Evaluation submission');
@@ -601,8 +647,9 @@ function research_application_workflow_mail($key, &$message, $params) {
                 $options);
             $message['body'][] = $params;
             break;
-         //Email template used to notify candidates of the
-         //application evaluation.
+
+           // Email template used to notify candidates of the
+           // application evaluation.
           case 'candidate_eval_notify':
             $from = $from;
             $message['subject'] = t('[ARAID] Application Evaluation');
@@ -610,7 +657,8 @@ function research_application_workflow_mail($key, &$message, $params) {
                 $options);
             $message['body'][] = $params;
             break;
-         //Evaluator Ranking Approval.
+
+          // Evaluator Ranking Approval.
           case 'ranking_approved':
             $from = $from;
             $message['subject'] = t('[ARAID] Ranking Approved');
@@ -618,7 +666,8 @@ function research_application_workflow_mail($key, &$message, $params) {
                 $options);
             $message['body'][] = $params;
             break;
-          //Notify Candidate of Published Evaluations.
+
+           // Notify Candidate of Published Evaluations.
           case 'evaluation_published':
             $from = $from;
             $message['subject'] = t('[ARAID] Evaluation Published');
@@ -626,7 +675,8 @@ function research_application_workflow_mail($key, &$message, $params) {
                 $options);
             $message['body'][] = $params;
             break;
-          //Notify Candidate of Rejection.
+
+          // Notify Candidate of Rejection.
           case 'candidate_rejection':
             $from = $from;
             $message['subject'] = t('[ARAID] Expression of Interest Rejected');
@@ -641,14 +691,17 @@ function research_application_workflow_mail($key, &$message, $params) {
  * Implements hook_node_access().
  */
  function research_application_workflow_node_access(NodeInterface $node, $op, AccountInterface $account) {
+
     // Only check edit access for evaluation_form nodes
     if ($node->getType() == 'evaluation_form' && $op == 'update') {
+
       // If the evaluation is locked and the user is not an admin, deny access
       if ($node->hasField('field_evaluation_locked') && 
           $node->get('field_evaluation_locked')->value == 1 && 
           !$account->hasPermission('administer nodes')) {
+
         // field_evaluation_locked is set to true when admin
-        // submits the ranking aproval in ApproveActionForm.php
+        // Submits the ranking aproval in ApproveActionForm.php
         return \Drupal\Core\Access\AccessResult::forbidden()->addCacheableDependency($node);
       }
     }
@@ -674,8 +727,10 @@ function research_application_workflow_cron() {
 
     // Check if the current date is past the end date.
     if ($end_date < $now) {
+
         // Call to applications has ended, restrict new account creation.
         $accounts_settings->set('register', 'admin_only')->save();
+
         // Clear all caches during cron run.
         Cache::invalidateTags(['rendered']);
         \Drupal::service('cache.bootstrap')->invalidateAll();
@@ -689,10 +744,13 @@ function research_application_workflow_cron() {
         \Drupal::service('cache.render')->invalidateAll();
         \Drupal::service('cache.static')->invalidateAll();
     }
+
     // Check if the current date is within the application period.
     elseif ($start_date < $now && $end_date > $now) {
+
         // Call to applications has started, allow visitors to create accounts.
         $accounts_settings->set('register', 'visitors')->save();
+        
         // Clear all caches during cron run.
         Cache::invalidateTags(['rendered']);
         \Drupal::service('cache.bootstrap')->invalidateAll();

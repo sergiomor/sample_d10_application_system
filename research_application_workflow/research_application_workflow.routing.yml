@@ -71,7 +71,7 @@ research_application_workflow.applications_evaluator:
   path: '/evaluator/applications'
   defaults:
     _title: 'Evaluations'
-    _controller: '\Drupal\research_application_workflow\Controller\ApplicationsEval::DashboardEval'
+    _controller: '\Drupal\research_application_workflow\Controller\ApplicationsEval::dashboardEval'
   requirements:
     _access: 'TRUE'
     _role: evaluador
@@ -100,7 +100,7 @@ research_application_workflow.applications_admin:
   path: '/administrator/applications'
   defaults:
     _title: 'Applications Management'
-    _controller: '\Drupal\research_application_workflow\Controller\ApplicationsAdmin::DashboardAdmin'
+    _controller: '\Drupal\research_application_workflow\Controller\ApplicationsAdmin::dashboardAdmin'
   requirements:
     _access: 'TRUE'
     _role: administrator
@@ -111,7 +111,7 @@ research_application_workflow.rankings_admin:
   path: '/admin/config/ranking-evaluators'
   defaults:
     _title: 'Rankings per Evaluator Management'
-    _controller: '\Drupal\research_application_workflow\Controller\RankingsEvaluatorsAdmin::RankingsAdmin'
+    _controller: '\Drupal\research_application_workflow\Controller\RankingsEvaluatorsAdmin::rankingsAdmin'
   requirements:
     _permission: 'access administration pages'
     _role: 'administrator'
@@ -120,7 +120,7 @@ research_application_workflow.evaluation_candidate:
   path: '/candidate/evaluation'
   defaults:
     _title: 'Evaluation'
-    _controller: '\Drupal\research_application_workflow\Controller\CandidateEvaluation::AppEvaluation'
+    _controller: '\Drupal\research_application_workflow\Controller\CandidateEvaluation::appEvaluation'
   requirements:
     _access: 'TRUE'
     _role: candidato_evaluado
